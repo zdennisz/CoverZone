@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.denniszabolotny.coverzone.view.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_singleCameraCoverageFragment"
+            app:destination="@id/singleCameraCoverageFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_selectZoneFragment"
+            app:destination="@id/selectZoneFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeCamerasFragment"
+        android:name="com.denniszabolotny.coverzone.view.PlaceCamerasFragment"
+        android:label="fragment_place_cameras"
+        tools:layout="@layout/fragment_place_cameras" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.denniszabolotny.coverzone.view.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/singleCameraCoverageFragment"
+        android:name="com.denniszabolotny.coverzone.view.SingleCameraCoverageFragment"
+        android:label="fragment_single_camera_coverage"
+        tools:layout="@layout/fragment_single_camera_coverage" />
+    <fragment
+        android:id="@+id/selectZoneFragment"
+        android:name="com.denniszabolotny.coverzone.view.SelectZoneFragment"
+        android:label="fragment_select_zone"
+        tools:layout="@layout/fragment_select_zone" >
+        <action
+            android:id="@+id/action_selectZoneFragment_to_placeCamerasFragment"
+            app:destination="@id/placeCamerasFragment" />
+    </fragment>
+</navigation>
