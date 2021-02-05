@@ -1,5 +1,6 @@
 package com.denniszabolotny.coverzone.view
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.denniszabolotny.coverzone.R
+import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentSettingsBinding
 import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
@@ -33,14 +36,20 @@ class SettingsFragment : Fragment() {
         cameraViewModel=ViewModelProvider(this,factory).get(CameraViewModel::class.java)
         binding.myViewModel=cameraViewModel
         binding.lifecycleOwner=viewLifecycleOwner
-        displayCamerasList();
+        initRecyclerView(inflater.context)
         // Inflate the layout for this fragment
         return binding.root
     }
 
+    private  fun initRecyclerView(context: Context){
+        binding.camerasRecyclerView.layoutManager=LinearLayoutManager(context)
+        displayCamerasList();
+
+    }
     private fun displayCamerasList(){
         cameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
             Log.i("My Tag", it.toString())
+            binding.camerasRecyclerView.adapter=RecyclerViewAdapter(it)
         })
     }
     override fun onDestroyView() {
