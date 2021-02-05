@@ -35,11 +35,38 @@ class CameraViewModel(private val repository: CameraRepository) : ViewModel(),Ob
     }
 
     fun saveOrUpdate(){
-        val offsetText=offset.value!!
-        val detectorWidthText=detectorWidth.value!!
-        val detectorHeightText=detectorHeight.value!!
-        val detectorPitchText=detectorPitch.value!!
-        val focalLengthText=focalLength.value!!
+        val offsetText:String
+        val detectorWidthText:String
+        val detectorHeightText:String
+        val detectorPitchText:String
+        val focalLengthText:String
+
+        if(offset.value==null){
+             offsetText=""
+        }else{
+            offsetText=offset.value!!
+        }
+
+        if(detectorWidth.value==null){
+            detectorWidthText=""
+        }else{
+            detectorWidthText=detectorWidth.value!!
+        }
+        if(detectorHeight.value==null){
+            detectorHeightText=""
+        }else{
+            detectorHeightText=detectorHeight.value!!
+        }
+        if(detectorPitch.value==null){
+            detectorPitchText=""
+        }else{
+            detectorPitchText=detectorPitch.value!!
+        }
+        if(focalLength.value==null){
+            focalLengthText=""
+        }else{
+            focalLengthText=focalLength.value!!
+        }
 
         insert(Camera(0,offsetText,focalLengthText,detectorWidthText,detectorHeightText,detectorPitchText))
 
