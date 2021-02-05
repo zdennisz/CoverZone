@@ -1,21 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.denniszabolotny.coverzone.viewmodel.CameraViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+
     android:id="@+id/constrainetLayoutSettings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Hello Settings Fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <EditText
+            android:id="@+id/et_detector_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:text="@={myViewModel.detectorHeight}"
+            android:gravity="center"
+            android:hint="@string/et_detector_height"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/et_detector_width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:text="@={myViewModel.detectorWidth}"
+            android:gravity="center"
+            android:hint="@string/et_detector_width"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/et_Offset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@={myViewModel.offset}"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/et_offset"
+            android:inputType="numberSigned" />
+
+        <EditText
+            android:id="@+id/et_detector_pitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:text="@={myViewModel.detectorPitch}"
+            android:gravity="center"
+            android:hint="@string/et_detector_pitch"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/et_focalLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:text="@={myViewModel.focalLength}"
+            android:gravity="center"
+            android:hint="@string/et_focal_length"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save_update_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="@={myViewModel.saveOrUpdateButtonText}"
+        android:onClick="@{()->myViewModel.saveOrUpdate()}"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_delete_data"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete_data"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_delete_data"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_delete_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="88dp"
+        android:text="@={myViewModel.clearAllOrDeletAllButtonText}"
+        android:onClick="@{()->myViewModel.clearAllOrDelete()}"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btn_delete_data">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cameras_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

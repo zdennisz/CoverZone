@@ -12,18 +12,18 @@ data class Camera(
     val id:Int,
 
     @ColumnInfo(name="angle_offset")
-    val angleOffset:Double,
+    val angleOffset:String,
 
     @ColumnInfo(name="focal_length")
-    val focalLength:Int,
+    val focalLength:String,
 
     @ColumnInfo(name="detector_width")
-    val detector_width:Int,
+    val detector_width:String,
 
     @ColumnInfo(name="detector_height")
-    val detector_height:Int,
+    val detector_height:String,
 
     @ColumnInfo(name="detector_pitch")
-    val detector_pitch:Double
+    val detector_pitch:String
 
 )

@@ -15,5 +15,5 @@ interface CameraDAO {
     @Query("DELETE FROM Cameras_data_table")
     suspend fun deleteAll()
     @Query("SELECT * FROM Cameras_data_table")
-    fun getAllCameras():List<LiveData<Camera>>
+    fun getAllCameras():LiveData<List<Camera>>
 }
