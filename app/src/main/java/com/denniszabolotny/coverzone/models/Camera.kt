@@ -9,21 +9,21 @@ data class Camera(
 
     @PrimaryKey(autoGenerate=true)
     @ColumnInfo(name="camera_id")
-    val id:Int,
+    var id:Int,
 
     @ColumnInfo(name="angle_offset")
-    val angleOffset:String,
+    var angleOffset:String,
 
     @ColumnInfo(name="focal_length")
-    val focalLength:String,
+    var focalLength:String,
 
     @ColumnInfo(name="detector_width")
-    val detector_width:String,
+    var detector_width:String,
 
     @ColumnInfo(name="detector_height")
-    val detector_height:String,
+    var detector_height:String,
 
     @ColumnInfo(name="detector_pitch")
-    val detector_pitch:String
+    var detector_pitch:String
 
 )

@@ -12,7 +12,8 @@ import kotlinx.coroutines.launch
 class CameraViewModel(private val repository: CameraRepository) : ViewModel(),Observable {
 
     val cameras=repository.cameras
-
+    private  var isUpdateOrDelte=false
+    private lateinit var cameraToUpdateOrDelete:Camera
 
     @Bindable
     val offset=MutableLiveData<String>()
@@ -35,6 +36,15 @@ class CameraViewModel(private val repository: CameraRepository) : ViewModel(),Ob
     }
 
     fun saveOrUpdate(){
+
+        if(isUpdateOrDelte){
+            cameraToUpdateOrDelete.angleOffset=offset.value!!
+            cameraToUpdateOrDelete.detector_pitch=detectorPitch.value!!
+            cameraToUpdateOrDelete.detector_height=detectorHeight.value!!
+            cameraToUpdateOrDelete.detector_width=detectorWidth.value!!
+            cameraToUpdateOrDelete.focalLength=focalLength.value!!
+            update(cameraToUpdateOrDelete)
+        }else{
         val offsetText:String
         val detectorWidthText:String
         val detectorHeightText:String
@@ -75,10 +85,16 @@ class CameraViewModel(private val repository: CameraRepository) : ViewModel(),Ob
         detectorHeight.value=null
         detectorPitch.value=null
         focalLength.value=null
+        }
     }
 
     fun clearAllOrDelete(){
-        clearAll()
+        if(isUpdateOrDelte){
+            delete(cameraToUpdateOrDelete)
+        }else{
+            clearAll()
+        }
+
     }
 
     fun insert(camera: Camera){
@@ -91,11 +107,20 @@ class CameraViewModel(private val repository: CameraRepository) : ViewModel(),Ob
         viewModelScope.launch {
             repository.update(camera)
          }
+
     }
     fun delete(camera: Camera){
         viewModelScope.launch {
             repository.delete(camera)
         }
+        offset.value=null
+        detectorHeight.value=null
+        detectorWidth.value=null
+        detectorPitch.value=null
+        focalLength.value=null
+        isUpdateOrDelte=false
+        saveOrUpdateButtonText.value="Save"
+        clearAllOrDeletAllButtonText.value="Clear All"
     }
     fun clearAll(){
         viewModelScope.launch {
@@ -103,6 +128,17 @@ class CameraViewModel(private val repository: CameraRepository) : ViewModel(),Ob
         }
     }
 
+    fun initUpdateAndDelete(camera:Camera){
+        offset.value=camera.angleOffset
+        detectorHeight.value=camera.detector_height
+        detectorWidth.value=camera.detector_width
+        detectorPitch.value=camera.detector_pitch
+        focalLength.value=camera.focalLength
+        isUpdateOrDelte=true
+        cameraToUpdateOrDelete=camera
+        saveOrUpdateButtonText.value="Update"
+        clearAllOrDeletAllButtonText.value="Delete"
+    }
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }

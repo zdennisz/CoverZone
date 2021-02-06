@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentSettingsBinding
 import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
+import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewmodel.CameraViewModel
 import com.denniszabolotny.coverzone.viewmodel.CameraViewModelFactory
 
@@ -49,8 +51,13 @@ class SettingsFragment : Fragment() {
     private fun displayCamerasList(){
         cameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
             Log.i("My Tag", it.toString())
-            binding.camerasRecyclerView.adapter=RecyclerViewAdapter(it)
+            binding.camerasRecyclerView.adapter=RecyclerViewAdapter(it,{selectedItem:Camera->listItemClicked(selectedItem)})
         })
+    }
+
+    private  fun listItemClicked(camera:Camera){
+        Toast.makeText(binding.camerasRecyclerView.context,"Selected camera pitch is ${camera.detector_pitch}",Toast.LENGTH_SHORT).show()
+        cameraViewModel.initUpdateAndDelete(camera)
     }
     override fun onDestroyView() {
         super.onDestroyView()

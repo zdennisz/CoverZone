@@ -8,7 +8,7 @@ import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.databinding.ListItemBinding
 import com.denniszabolotny.coverzone.models.Camera
 
-class RecyclerViewAdapter(private  val cameraList:List<Camera>):
+class RecyclerViewAdapter(private  val cameraList:List<Camera>,private val clickListener:(Camera)->Unit):
     RecyclerView.Adapter<MyViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -25,7 +25,7 @@ class RecyclerViewAdapter(private  val cameraList:List<Camera>):
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-    holder.bind(cameraList[position])
+    holder.bind(cameraList[position],clickListener)
     }
 
 }
@@ -33,11 +33,14 @@ class RecyclerViewAdapter(private  val cameraList:List<Camera>):
 
 class MyViewHolder(val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
 
-    fun bind(camera: Camera){
+    fun bind(camera: Camera,clickListener: (Camera) -> Unit){
         binding.tvDetectorHeight.text=camera.detector_height
         binding.tvDetectorWidth.text=camera.detector_width
         binding.tvDetectorPitch.text=camera.detector_pitch
         binding.tvFocalLength.text=camera.focalLength
         binding.tvOffset.text=camera.angleOffset
+        binding.listItemLayout.setOnClickListener{
+            clickListener(camera)
+        }
     }
 }
