@@ -22,45 +22,46 @@ import com.denniszabolotny.coverzone.viewmodel.CameraViewModelFactory
 
 
 class SettingsFragment : Fragment() {
-    private var _binding: FragmentSettingsBinding?=null
+    private var _binding: FragmentSettingsBinding? = null
     private lateinit var cameraViewModel: CameraViewModel
-    private val binding get()=_binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSettingsBinding.inflate(inflater,container,false)
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
-        val dao=CameraDatabase.getInstace(inflater.context).cameraDAO
-        val repository=CameraRepository(dao)
-        val factory= CameraViewModelFactory(repository)
-        cameraViewModel=ViewModelProvider(this,factory).get(CameraViewModel::class.java)
-        binding.myViewModel=cameraViewModel
-        binding.lifecycleOwner=viewLifecycleOwner
+        val dao = CameraDatabase.getInstace(inflater.context).cameraDAO
+        val repository = CameraRepository(dao)
+        val factory = CameraViewModelFactory(repository)
+        cameraViewModel = ViewModelProvider(this, factory).get(CameraViewModel::class.java)
+        binding.myViewModel = cameraViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         initRecyclerView(inflater.context)
         // Inflate the layout for this fragment
         return binding.root
     }
 
-    private  fun initRecyclerView(context: Context){
-        binding.camerasRecyclerView.layoutManager=LinearLayoutManager(context)
+    private fun initRecyclerView(context: Context) {
+        binding.camerasRecyclerView.layoutManager = LinearLayoutManager(context)
         displayCamerasList();
 
     }
-    private fun displayCamerasList(){
+
+    private fun displayCamerasList() {
         cameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            Log.i("My Tag", it.toString())
-            binding.camerasRecyclerView.adapter=RecyclerViewAdapter(it,{selectedItem:Camera->listItemClicked(selectedItem)})
+            binding.camerasRecyclerView.adapter = RecyclerViewAdapter(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
         })
     }
 
-    private  fun listItemClicked(camera:Camera){
-        Toast.makeText(binding.camerasRecyclerView.context,"Selected camera pitch is ${camera.detector_pitch}",Toast.LENGTH_SHORT).show()
+    private fun listItemClicked(camera: Camera) {
+        Toast.makeText(binding.camerasRecyclerView.context, "Selected camera pitch is ${camera.detector_pitch}", Toast.LENGTH_SHORT).show()
         cameraViewModel.initUpdateAndDelete(camera)
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding=null
+        _binding = null
     }
 }
