@@ -12,13 +12,26 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_singleCameraCoverageFragment"
-            app:destination="@id/singleCameraCoverageFragment" />
+            app:destination="@id/singleCameraCoverageFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
         <action
             android:id="@+id/action_mainFragment_to_selectZoneFragment"
-            app:destination="@id/selectZoneFragment" />
+            app:destination="@id/selectZoneFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left"/>
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/placeCamerasFragment"
@@ -42,6 +55,10 @@
         tools:layout="@layout/fragment_select_zone" >
         <action
             android:id="@+id/action_selectZoneFragment_to_placeCamerasFragment"
-            app:destination="@id/placeCamerasFragment" />
+            app:destination="@id/placeCamerasFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
 </navigation>

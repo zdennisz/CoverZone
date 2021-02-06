@@ -7,5 +7,7 @@
     <string name="et_detector_pitch">Detector Pitch</string>
     <string name="et_focal_length">Focal Length</string>
     <string name="et_offset">Offset</string>
-
+    <string name="btn_single_camera_cover">Single Camera Zone Coverage </string>
+    <string name="btn_multiple_camera_cover">Multiple Cameras Zone Coverage</string>
+    <string name="btn_settings">Settings</string>
 </resources>
