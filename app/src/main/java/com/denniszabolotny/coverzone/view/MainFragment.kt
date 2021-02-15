@@ -34,18 +34,18 @@ class MainFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        binding.btnSettings.setOnClickListener(this)
-        binding.btnMultipleCameraCoverage.setOnClickListener(this)
-        binding.btnSingleCameraCoverage.setOnClickListener(this)
+      //  binding.btnSettings.setOnClickListener(this)
+      //  binding.btnMultipleCameraCoverage.setOnClickListener(this)
+       // binding.btnSingleCameraCoverage.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
 
         when (v!!.id) {
-            binding.btnSingleCameraCoverage.id -> navController!!.navigate(R.id.action_mainFragment_to_singleCameraCoverageFragment)
-            binding.btnMultipleCameraCoverage.id -> navController!!.navigate(R.id.action_mainFragment_to_selectZoneFragment)
-            binding.btnSettings.id -> navController!!.navigate(R.id.action_mainFragment_to_settingsFragment)
+           // binding.btnSingleCameraCoverage.id -> navController!!.navigate(R.id.action_mainFragment_to_singleCameraCoverageFragment)
+          //  binding.btnMultipleCameraCoverage.id -> navController!!.navigate(R.id.action_mainFragment_to_selectZoneFragment)
+          //  binding.btnSettings.id -> navController!!.navigate(R.id.action_mainFragment_to_settingsFragment)
         }
     }
 
