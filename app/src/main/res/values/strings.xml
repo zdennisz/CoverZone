@@ -10,4 +10,13 @@
     <string name="btn_single_camera_cover">Single Camera Zone Coverage </string>
     <string name="btn_multiple_camera_cover">Multiple Cameras Zone Coverage</string>
     <string name="btn_settings">Settings</string>
+
+
+    <string name="cardTitleSingle">Single Camera Coverage</string>
+    <string name="cardContentSingle">Coverage done via a single camera</string>
+
+    <string name="cardTitleMultiple">Multiple Cameras Coverage</string>
+    <string name="cardContentMultiple">Coverage done via multiple cameras</string>
+
+    <string name="mainFragmentIntro">What would you like to cover today? </string>
 </resources>
