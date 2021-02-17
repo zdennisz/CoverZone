@@ -16,7 +16,7 @@
         android:id="@+id/constrainetLayoutSettings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.SettingsFragment">
+        tools:context=".view.EditCameraFragment">
 
         <LinearLayout
             android:id="@+id/linearLayout"

@@ -2,18 +2,16 @@ package com.denniszabolotny.coverzone.view
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
-import com.denniszabolotny.coverzone.databinding.FragmentSettingsBinding
+import com.denniszabolotny.coverzone.databinding.FragmentEditCameraBinding
 import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.models.Camera
@@ -21,8 +19,8 @@ import com.denniszabolotny.coverzone.viewmodel.CameraViewModel
 import com.denniszabolotny.coverzone.viewmodel.CameraViewModelFactory
 
 
-class SettingsFragment : Fragment() {
-    private var _binding: FragmentSettingsBinding? = null
+class EditCameraFragment : Fragment() {
+    private var _binding: FragmentEditCameraBinding? = null
     private lateinit var cameraViewModel: CameraViewModel
     private val binding get() = _binding!!
 
@@ -30,7 +28,7 @@ class SettingsFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        _binding = FragmentEditCameraBinding.inflate(inflater, container, false)
 
         val dao = CameraDatabase.getInstace(inflater.context).cameraDAO
         val repository = CameraRepository(dao)

@@ -11,54 +11,64 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_singleCameraCoverageFragment"
-            app:destination="@id/singleCameraCoverageFragment"
-            app:popEnterAnim="@anim/slide_in_left"
+            android:id="@+id/action_mainFragment_to_singleCoverageFragment"
+            app:destination="@id/singleCoverageFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_right"
             app:exitAnim="@anim/slide_out_left"
-            />
-        <action
-            android:id="@+id/action_mainFragment_to_selectZoneFragment"
-            app:destination="@id/selectZoneFragment"
             app:popEnterAnim="@anim/slide_in_left"
-            app:enterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_mainFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popEnterAnim="@anim/slide_in_left"
+            android:id="@+id/action_mainFragment_to_multipleCoverageFragment3"
+            app:destination="@id/multipleCoverageFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/placeCamerasFragment"
-        android:name="com.denniszabolotny.coverzone.view.PlaceCamerasFragment"
-        android:label="fragment_place_cameras"
-        tools:layout="@layout/fragment_place_cameras" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.denniszabolotny.coverzone.view.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/singleCameraCoverageFragment"
-        android:name="com.denniszabolotny.coverzone.view.SingleCameraCoverageFragment"
-        android:label="fragment_single_camera_coverage"
-        tools:layout="@layout/fragment_single_camera_coverage" />
-    <fragment
-        android:id="@+id/selectZoneFragment"
-        android:name="com.denniszabolotny.coverzone.view.SelectZoneFragment"
-        android:label="fragment_select_zone"
-        tools:layout="@layout/fragment_select_zone" >
+        android:id="@+id/singleCoverageFragment"
+        android:name="com.denniszabolotny.coverzone.view.SingleCoverageFragment"
+        android:label="fragment_single_coverage"
+        tools:layout="@layout/fragment_single_coverage" >
         <action
-            android:id="@+id/action_selectZoneFragment_to_placeCamerasFragment"
-            app:destination="@id/placeCamerasFragment"
-            app:popEnterAnim="@anim/slide_in_left"
+            android:id="@+id/action_singleCoverageFragment_to_editCameraFragment"
+            app:destination="@id/editCameraFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_singleCoverageFragment_to_addCamera"
+            app:destination="@id/addCamera"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_singleCoverageFragment_to_viewCoverageFragment"
+            app:destination="@id/viewCoverageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/multipleCoverageFragment"
+        android:name="com.denniszabolotny.coverzone.view.MultipleCoverageFragment"
+        android:label="fragment_multiple_coverage"
+        tools:layout="@layout/fragment_multiple_coverage" />
+    <fragment
+        android:id="@+id/addCamera"
+        android:name="com.denniszabolotny.coverzone.view.AddCamera"
+        android:label="fragment_add_camera"
+        tools:layout="@layout/fragment_add_camera" />
+    <fragment
+        android:id="@+id/editCameraFragment"
+        android:name="com.denniszabolotny.coverzone.view.EditCameraFragment"
+        android:label="EditCameraFragment" />
+    <fragment
+        android:id="@+id/viewCoverageFragment"
+        android:name="com.denniszabolotny.coverzone.view.ViewCoverageFragment"
+        android:label="fragment_view_coverage"
+        tools:layout="@layout/fragment_view_coverage" />
 </navigation>

@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import com.denniszabolotny.coverzone.R
 
 
-class PlaceCamerasFragment : Fragment() {
+class MultipleCoverageFragment : Fragment() {
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_place_cameras, container, false)
+        return inflater.inflate(R.layout.fragment_multiple_coverage, container, false)
     }
 
 }
