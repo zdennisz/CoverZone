@@ -9,31 +9,37 @@ import android.widget.Button
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.denniszabolotny.coverzone.R
+import com.denniszabolotny.coverzone.databinding.FragmentSingleCoverageBinding
 
 
 class SingleCoverageFragment : Fragment(), View.OnClickListener {
-
+    private  var _binding: FragmentSingleCoverageBinding?=null
+    private val binding get() = _binding!!
     var navController: NavController? = null
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_single_coverage, container, false)
+        _binding=FragmentSingleCoverageBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        view.findViewById<Button>(R.id.btn_goToNextStep).setOnClickListener(this)
+        binding.btnAddCamera.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-
-          //  R.id.btn_goToNextStep -> navController!!.navigate(R.id.action_selectZoneFragment_to_placeCamerasFragment)
+          binding.btnAddCamera.id -> navController!!.navigate(R.id.action_singleCoverageFragment_to_addCamera)
         }
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
+    }
 }

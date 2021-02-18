@@ -61,7 +61,15 @@
         android:id="@+id/addCamera"
         android:name="com.denniszabolotny.coverzone.view.AddCamera"
         android:label="fragment_add_camera"
-        tools:layout="@layout/fragment_add_camera" />
+        tools:layout="@layout/fragment_add_camera" >
+        <action
+            android:id="@+id/action_addCamera_to_singleCoverageFragment"
+            app:destination="@id/singleCoverageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/editCameraFragment"
         android:name="com.denniszabolotny.coverzone.view.EditCameraFragment"

@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="tealSingleCamera">#02c6b2</color>
+    <color name="darkBlueAcceptBtn">#162b65</color>
 </resources>

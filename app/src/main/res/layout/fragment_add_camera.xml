@@ -1,14 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.AddCamera">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvCameraName"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="@string/cameraName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/cameraName"
+        app:layout_constraintEnd_toEndOf="@+id/etDetPitch"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etDetPitch"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <EditText
+        android:id="@+id/etFocalLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tvCameraHeight"
+        app:layout_constraintEnd_toEndOf="@+id/etCameraHeight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etCameraHeight" />
+
+    <EditText
+        android:id="@+id/etOffset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/etCameraHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tvOffset"
+        app:layout_constraintEnd_toEndOf="@+id/etOffset"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etOffset" />
+
+    <EditText
+        android:id="@+id/etDetPitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tvFocalLength"
+        app:layout_constraintEnd_toEndOf="@+id/etFocalLength"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etFocalLength"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.849" />
+
+    <EditText
+        android:id="@+id/etDetHeight"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/x"
+        app:layout_constraintBottom_toBottomOf="@+id/etDetWidth"
+        app:layout_constraintEnd_toStartOf="@+id/etDetHeight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/etDetWidth"
+        app:layout_constraintTop_toTopOf="@+id/etDetWidth"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/etDetWidth"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <TextView
+        android:id="@+id/tvDetectorSize"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="@string/detectorSize"
+        app:layout_constraintBottom_toTopOf="@+id/etDetWidth"
+        app:layout_constraintStart_toStartOf="@+id/etDetWidth" />
+
+    <TextView
+        android:id="@+id/tvDetPitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detectorPitch"
+        app:layout_constraintBottom_toTopOf="@+id/etDetPitch"
+        app:layout_constraintStart_toStartOf="@+id/etDetPitch" />
+
+    <TextView
+        android:id="@+id/tvFocalLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/focalLength"
+        app:layout_constraintBottom_toTopOf="@+id/etFocalLength"
+        app:layout_constraintStart_toStartOf="@+id/etFocalLength" />
+
+    <TextView
+        android:id="@+id/tvCameraHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cameraHeight"
+        app:layout_constraintBottom_toTopOf="@+id/etCameraHeight"
+        app:layout_constraintStart_toStartOf="@+id/etCameraHeight" />
+
+    <TextView
+        android:id="@+id/tvOffset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/offset"
+        app:layout_constraintBottom_toTopOf="@+id/etOffset"
+        app:layout_constraintStart_toStartOf="@+id/etOffset" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <Button
+        android:id="@+id/btnAddCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/darkBlueAcceptBtn"
+        android:minWidth="64dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/addCamerabtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancelAction"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:shadowColor="#FFFFFF"
+        android:text="@string/cancelBtnAddition"
+        android:textColor="@color/darkBlueAcceptBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddCamera" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAddCamera"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvAddCamera" />
+
+    <TextView
+        android:id="@+id/tvAddCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/addCameraTitle"
+        android:textSize="@dimen/textSizeTitle"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.76" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

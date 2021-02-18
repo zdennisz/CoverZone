@@ -11,12 +11,25 @@
     <string name="btn_multiple_camera_cover">Multiple Cameras Zone Coverage</string>
     <string name="btn_settings">Settings</string>
 
-
+    <!--Main fragment strings -->
     <string name="cardTitleSingle">Single Camera Coverage</string>
     <string name="cardContentSingle">Coverage done via a single camera</string>
-
     <string name="cardTitleMultiple">Multiple Cameras Coverage</string>
     <string name="cardContentMultiple">Coverage done via multiple cameras</string>
-
     <string name="mainFragmentIntro">What would you like to cover today? </string>
+
+    <!--Add Camera Fragment strings -->
+    <string name="cameraName">Name</string>
+    <string name="detectorSize">Detector Size</string>
+    <string name="detectorPitch">Detector Pitch</string>
+    <string name="focalLength">Focal Length</string>
+    <string name="cameraHeight">Camera Height</string>
+    <string name="offset">Offset</string>
+    <string name="x">x</string>
+    <string name="addCameraTitle">Add Camera</string>
+    <string name="addCamerabtn">Add</string>
+    <string name="cancelBtnAddition">Cancel</string>
+
+    <!--Single Coverage Fragment strings -->
+    <string name="plusSign">+</string>
 </resources>
