@@ -33,4 +33,5 @@
 
     <!--Single Coverage Fragment strings -->
     <string name="plusSign">+</string>
+    <string name="searchCamera">Search Camera</string>
 </resources>
