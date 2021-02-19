@@ -18,7 +18,8 @@
 
     <!--Add Camera Fragment strings -->
     <string name="cameraName">Name</string>
-    <string name="detectorSize">Detector Size</string>
+    <string name="detectorWidth">Detector Width</string>
+    <string name="detectorHeight">Detector Height</string>
     <string name="width">Width</string>
     <string name="height">Height</string>
     <string name="detectorPitch">Detector Pitch</string>

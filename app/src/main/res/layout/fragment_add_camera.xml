@@ -12,8 +12,11 @@
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/cameraName"
         android:layout_marginTop="8dp"
+        android:hint="@string/cameraName"
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline">
@@ -27,32 +30,25 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/detectorSize"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/height"
+        android:layout_marginTop="8dp"
+        android:hint="@string/detectorHeight"
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:background="@color/white"
-            android:textSize="@dimen/textSizeInputSmall" />
+            android:inputType="number"
+            android:textSize="@dimen/textSizeInputExtraSmall" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,30 +57,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:maxWidth="8dp"
         android:text="@string/x"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout2"
+        app:layout_constraintVertical_bias="0.8" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/width"
+        android:layout_marginTop="8dp"
+        android:hint="@string/detectorWidth"
+
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:background="@color/white"
-            android:textSize="@dimen/textSizeInputSmall" />
+            android:inputType="number"
+            android:textSize="@dimen/textSizeInputExtraSmall" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +96,9 @@
         android:hint="@string/detectorPitch"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -114,6 +118,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/focalLength"
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
@@ -133,6 +140,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/cameraHeight"
         android:layout_marginTop="8dp"
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
@@ -152,6 +162,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/offset"
+        android:textColorHint="@color/darkBlueAcceptBtn"
+        app:boxStrokeColor="@color/darkBlueAcceptBtn"
+        app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -241,7 +254,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.76" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

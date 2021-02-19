@@ -4,6 +4,7 @@
     <dimen name="textSizeTitle">20sp</dimen>
     <dimen name="textSizeContent">16sp</dimen>
     <dimen name="textSizeInputSmall">14sp</dimen>
+    <dimen name="textSizeInputExtraSmall">12sp</dimen>
 
 
 </resources>
