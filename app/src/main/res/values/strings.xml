@@ -1,15 +1,13 @@
 <resources>
     <string name="app_name">CoverZone</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove when layouts are built , Partially used strings -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="et_detector_width">Detector Width</string>
     <string name="et_detector_height">Detector Height</string>
     <string name="et_detector_pitch">Detector Pitch</string>
     <string name="et_focal_length">Focal Length</string>
     <string name="et_offset">Offset</string>
-    <string name="btn_single_camera_cover">Single Camera Zone Coverage </string>
-    <string name="btn_multiple_camera_cover">Multiple Cameras Zone Coverage</string>
-    <string name="btn_settings">Settings</string>
+
 
     <!--Main fragment strings -->
     <string name="cardTitleSingle">Single Camera Coverage</string>
@@ -21,6 +19,8 @@
     <!--Add Camera Fragment strings -->
     <string name="cameraName">Name</string>
     <string name="detectorSize">Detector Size</string>
+    <string name="width">Width</string>
+    <string name="height">Height</string>
     <string name="detectorPitch">Detector Pitch</string>
     <string name="focalLength">Focal Length</string>
     <string name="cameraHeight">Camera Height</string>
