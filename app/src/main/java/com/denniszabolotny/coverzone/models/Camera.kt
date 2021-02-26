@@ -24,6 +24,12 @@ data class Camera(
         var detector_height: String,
 
         @ColumnInfo(name = "detector_pitch")
-        var detector_pitch: String
+        var detector_pitch: String,
+
+        @ColumnInfo(name="camera_height")
+        var camera_height:String,
+
+        @ColumnInfo(name="camera_name")
+        var camera_name:String
 
 )

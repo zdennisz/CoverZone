@@ -7,7 +7,7 @@
 
         <variable
             name="myViewModel"
-            type="com.denniszabolotny.coverzone.viewmodel.CameraViewModel" />
+            type="com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel" />
 
     </data>
 
@@ -100,7 +100,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="60dp"
-            android:onClick="@{()->myViewModel.saveOrUpdate()}"
             android:text="@={myViewModel.saveOrUpdateButtonText}"
             app:backgroundTint="#E91E63"
             app:layout_constraintBottom_toBottomOf="@+id/btn_delete_data"

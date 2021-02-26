@@ -19,7 +19,7 @@ abstract class CameraDatabase : RoomDatabase() {
                 var instace = INSTANCE
                 if (instace == null) {
                     instace = Room.databaseBuilder(
-                            context.applicationContext, CameraDatabase::class.java, "cameras_data_database").build()
+                            context.applicationContext, CameraDatabase::class.java, "cameras_data_database1").build()
                 }
                 return instace
             }

@@ -8,20 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentEditCameraBinding
-import com.denniszabolotny.coverzone.db.CameraDatabase
-import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.models.Camera
-import com.denniszabolotny.coverzone.viewmodel.CameraViewModel
-import com.denniszabolotny.coverzone.viewmodel.CameraViewModelFactory
+import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
 
 
 class EditCameraFragment : Fragment() {
     private var _binding: FragmentEditCameraBinding? = null
-    private lateinit var cameraViewModel: CameraViewModel
+    private lateinit var cameraViewModel: AddCameraViewModel
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -30,13 +26,13 @@ class EditCameraFragment : Fragment() {
     ): View? {
         _binding = FragmentEditCameraBinding.inflate(inflater, container, false)
 
-        val dao = CameraDatabase.getInstace(inflater.context).cameraDAO
-        val repository = CameraRepository(dao)
-        val factory = CameraViewModelFactory(repository)
-        cameraViewModel = ViewModelProvider(this, factory).get(CameraViewModel::class.java)
-        binding.myViewModel = cameraViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-        initRecyclerView(inflater.context)
+     //   val dao = CameraDatabase.getInstace(inflater.context).cameraDAO
+     //   val repository = CameraRepository(dao)
+     //   val factory = CameraViewModelFactory(repository)
+     //   cameraViewModel = ViewModelProvider(this, factory).get(CameraViewModel::class.java)
+     //   binding.myViewModel = cameraViewModel
+     //   binding.lifecycleOwner = viewLifecycleOwner
+     //   initRecyclerView(inflater.context)
         // Inflate the layout for this fragment
         return binding.root
     }

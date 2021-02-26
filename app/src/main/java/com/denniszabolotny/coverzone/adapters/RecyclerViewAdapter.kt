@@ -38,6 +38,8 @@ class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(bindi
         binding.tvDetectorPitch.text = camera.detector_pitch
         binding.tvFocalLength.text = camera.focalLength
         binding.tvOffset.text = camera.angleOffset
+        binding.tvCameraName.text=camera.camera_name
+        binding.tvCameraHeight.text=camera.camera_height
         binding.listItemLayout.setOnClickListener {
             clickListener(camera)
         }
