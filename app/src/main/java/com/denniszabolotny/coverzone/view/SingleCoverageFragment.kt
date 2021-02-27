@@ -11,7 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentSingleCoverageBinding
@@ -63,6 +65,7 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
     }
     private fun initRecyclerView(context: Context) {
         binding.camerasRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.camerasRecyclerView.addItemDecoration( DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         displayCamerasList();
 
     }

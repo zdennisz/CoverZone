@@ -34,4 +34,8 @@
     <!--Single Coverage Fragment strings -->
     <string name="plusSign">+</string>
     <string name="searchCamera">Search Camera</string>
+    <string name="selectCamera">Select a camera</string>
+    <!--Recycler view view holder strings -->
+    <string name="detectorSize">Detector Size</string>
+
 </resources>

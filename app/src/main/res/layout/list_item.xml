@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
@@ -18,9 +17,7 @@
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="7dp">
+            app:cardBackgroundColor="@color/white">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/list_item_layout"
@@ -32,27 +29,26 @@
 
                 <TextView
                     android:id="@+id/tv_detector_width"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Height"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_detector_height"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toTopOf="@+id/tv_detector_height"
-                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
                     tools:layout_conversion_absoluteHeight="20dp"
                     tools:layout_conversion_absoluteWidth="0dp" />
 
                 <TextView
                     android:id="@+id/tv_detector_height"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Width"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toStartOf="@+id/textView7"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/guideline6"
@@ -62,53 +58,52 @@
 
                 <TextView
                     android:id="@+id/tv_detector_pitch"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Pitch"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_width"
                     app:layout_constraintEnd_toEndOf="@+id/textView3"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
                     tools:layout_conversion_absoluteHeight="20dp"
                     tools:layout_conversion_absoluteWidth="0dp" />
 
                 <TextView
                     android:id="@+id/tv_offset"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_pitch"
                     app:layout_constraintEnd_toEndOf="@+id/textView6"
                     app:layout_constraintStart_toStartOf="@+id/textView6"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
                     tools:layout_conversion_absoluteHeight="20dp"
                     tools:layout_conversion_absoluteWidth="0dp" />
 
                 <TextView
                     android:id="@+id/tv_camera_height"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="height"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline15"
                     app:layout_constraintEnd_toEndOf="@+id/textView4"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <ImageButton
                     android:id="@+id/imageButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:background="@color/white"
                     android:contentDescription="Choose Camera"
-                    app:srcCompat="@drawable/ic_play_button"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline13"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_play_button" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -123,12 +118,14 @@
 
                 <TextView
                     android:id="@+id/tv_cameraName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:text="Camera Name"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline16"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                    app:layout_constraintStart_toEndOf="@+id/guideline6"
                     app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
                 <ImageView
@@ -147,24 +144,22 @@
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Detector Size"
+                    android:gravity="center"
+                    android:text="@string/detectorSize"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintStart_toStartOf="@+id/guideline6"
                     app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
                 <TextView
                     android:id="@+id/tv_focal_length"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Focal Length"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_camera_height"
                     app:layout_constraintEnd_toEndOf="@+id/textView5"
                     app:layout_constraintStart_toStartOf="@+id/textView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5"
                     tools:layout_conversion_absoluteHeight="20dp"
                     tools:layout_conversion_absoluteWidth="0dp" />
 
@@ -173,7 +168,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Detector Pitch"
+                    android:text="@string/detectorPitch"
+                    android:textSize="12sp"
+                    android:theme="@style/Theme.CoverZone"
                     app:layout_constraintEnd_toStartOf="@+id/guideline12"
                     app:layout_constraintStart_toStartOf="@+id/guideline11"
                     app:layout_constraintTop_toTopOf="@+id/guideline16" />
@@ -182,19 +179,20 @@
                     android:id="@+id/textView4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Camera Height"
+                    android:gravity="center"
+                    android:text="@string/cameraHeight"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintStart_toEndOf="@+id/guideline6"
                     app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Focal Length"
+                    android:text="@string/focalLength"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline12"
                     app:layout_constraintStart_toStartOf="@+id/guideline11"
                     app:layout_constraintTop_toTopOf="@+id/guideline17" />
@@ -203,10 +201,9 @@
                     android:id="@+id/textView6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:gravity="center"
-                    android:text="Offset"
+                    android:text="@string/offset"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline13"
                     app:layout_constraintStart_toStartOf="@+id/guideline12"
                     app:layout_constraintTop_toTopOf="@+id/guideline16" />
@@ -217,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@+id/tv_detector_height"
-                    app:layout_constraintGuide_percent="0.1"
+                    app:layout_constraintGuide_percent="0.08"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -227,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintGuide_percent="0.39"
+                    app:layout_constraintGuide_percent="0.4"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/tv_detector_width" />
 
@@ -236,14 +233,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.65" />
+                    app:layout_constraintGuide_percent="0.7" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.8" />
+                    app:layout_constraintGuide_percent="0.87" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline14"
@@ -276,13 +273,13 @@
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="X"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_detector_height"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="@string/x"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_width"
                     app:layout_constraintEnd_toStartOf="@+id/tv_detector_width"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/tv_detector_height"
-                    app:layout_constraintTop_toTopOf="@+id/tv_detector_height" />
+                    app:layout_constraintStart_toEndOf="@+id/tv_detector_height" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
