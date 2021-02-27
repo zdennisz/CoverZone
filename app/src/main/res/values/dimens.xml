@@ -5,6 +5,6 @@
     <dimen name="textSizeContent">16dp</dimen>
     <dimen name="textSizeInputSmall">14dp</dimen>
     <dimen name="textSizeInputExtraSmall">12dp</dimen>
-
+    <dimen name="textViewSmallViewHolder">14dp</dimen>
 
 </resources>
