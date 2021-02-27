@@ -7,7 +7,6 @@
         <variable
             name="addCameraViewModel"
             type="com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel" />
-
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -224,7 +223,7 @@
         android:text="@string/addCamerabtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="@{()->addCameraViewModel.saveNewCamera()}"/>
+        />
 
     <Button
         android:id="@+id/btnCancelAction"

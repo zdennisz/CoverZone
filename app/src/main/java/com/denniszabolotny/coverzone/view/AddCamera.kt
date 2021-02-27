@@ -14,6 +14,7 @@ import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class AddCamera : Fragment(),View.OnClickListener {
     private var _binding: FragmentAddCameraBinding?=null
@@ -42,12 +43,17 @@ class AddCamera : Fragment(),View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         binding.btnCancelAction.setOnClickListener(this)
+        binding.btnAddCamera.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v!!.id){
             binding.btnCancelAction.id->navController!!.navigate(R.id.action_addCamera_to_singleCoverageFragment)
-
+            binding.btnAddCamera.id -> {
+                binding.addCameraViewModel!!.saveNewCamera()
+                Snackbar.make(v,"Camera was added successfully",Snackbar.LENGTH_SHORT).show()
+                navController!!.navigate(R.id.action_addCamera_to_singleCoverageFragment)
+            }
         }
     }
     override fun onDestroyView() {
