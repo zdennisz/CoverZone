@@ -1,10 +1,14 @@
 package com.denniszabolotny.coverzone.view
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.getSystemService
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -52,6 +56,7 @@ class AddCamera : Fragment(),View.OnClickListener {
             binding.btnAddCamera.id -> {
                 binding.addCameraViewModel!!.saveNewCamera()
                 Snackbar.make(v,"Camera was added successfully",Snackbar.LENGTH_SHORT).show()
+                hideKeyboard(v)
                 navController!!.navigate(R.id.action_addCamera_to_singleCoverageFragment)
             }
         }
@@ -61,6 +66,11 @@ class AddCamera : Fragment(),View.OnClickListener {
         _binding=null
 
     }
-
+    fun hideKeyboard(v:View){
+        val inputMethodManager=v.context.getSystemService<InputMethodManager>()
+        if (inputMethodManager != null) {
+            inputMethodManager.hideSoftInputFromWindow(v.windowToken,0)
+        }
+}
 
 }

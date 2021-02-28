@@ -2,20 +2,20 @@ package com.denniszabolotny.coverzone.view
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
-import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
+import com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView
 import com.denniszabolotny.coverzone.databinding.FragmentSingleCoverageBinding
 import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
@@ -26,8 +26,11 @@ import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModelFactory
 
 class SingleCoverageFragment : Fragment(), View.OnClickListener {
     private  var _binding: FragmentSingleCoverageBinding?=null
+
     private lateinit var addCameraViewModel:AddCameraViewModel
+    private lateinit var singleCoverageRecyclerView: SingleCoverageRecyclerView
     private val binding get() = _binding!!
+
     var navController: NavController? = null
 
     override fun onCreateView(
@@ -42,8 +45,10 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
         val factory= AddCameraViewModelFactory(repository)
         addCameraViewModel= ViewModelProvider(this,factory).get(AddCameraViewModel::class.java)
         binding.singleCoverageViewModel=addCameraViewModel
-        binding.lifecycleOwner=viewLifecycleOwner
         initRecyclerView(inflater.context)
+       //binding.singleCoverageAdapter=singleCoverageRecyclerView
+        binding.lifecycleOwner=viewLifecycleOwner
+
         return binding.root
     }
 
@@ -51,6 +56,22 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         binding.btnAddCamera.setOnClickListener(this)
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                var newText = newText?.toLowerCase()
+                if (newText != null) {
+                    binding.singleCoverageAdapter!!.filter.filter(newText)
+                }
+                return true
+            }
+
+        })
+
     }
 
     override fun onClick(v: View?) {
@@ -71,9 +92,8 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
     }
 
     private fun displayCamerasList() {
-
         addCameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            binding.camerasRecyclerView.adapter = RecyclerViewAdapter(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
+            //binding.camerasRecyclerView = SingleCoverageRecyclerView(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
         })
     }
     private fun listItemClicked(camera: Camera) {
@@ -82,3 +102,5 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
     }
 
 }
+
+

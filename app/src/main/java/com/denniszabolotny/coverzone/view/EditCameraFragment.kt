@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.denniszabolotny.coverzone.adapters.RecyclerViewAdapter
+import com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView
 import com.denniszabolotny.coverzone.databinding.FragmentEditCameraBinding
 import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
@@ -45,7 +45,7 @@ class EditCameraFragment : Fragment() {
 
     private fun displayCamerasList() {
         cameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            binding.camerasRecyclerView.adapter = RecyclerViewAdapter(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
+            binding.camerasRecyclerView.adapter = SingleCoverageRecyclerView(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
         })
     }
 
