@@ -114,7 +114,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline13"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_play_button" />
+                    app:srcCompat="@drawable/img_btn_recycler_view_edit" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -125,7 +125,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline6"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline14"
-                    app:srcCompat="@drawable/ic_dot" />
+                    app:srcCompat="@drawable/img_dot_recycler_view_card" />
 
                 <TextView
                     android:id="@+id/tv_cameraName"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainFragment"
-    android:background="@drawable/ic_mainfragmentbackground">
+    android:background="@drawable/img_background_color_main_screen">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/singleCardView"
@@ -51,7 +51,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_single_camera_coverage"
+                app:srcCompat="@drawable/img_single_coverage_main_screen"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -113,7 +113,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_multiple_camera_coverage"
+                app:srcCompat="@drawable/img_multiple_coverage_main_screen"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"

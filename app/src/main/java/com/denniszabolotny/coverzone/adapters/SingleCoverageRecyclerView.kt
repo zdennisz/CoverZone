@@ -7,7 +7,7 @@ import android.widget.Filterable
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
-import com.denniszabolotny.coverzone.databinding.ListItemBinding
+import com.denniszabolotny.coverzone.databinding.ItemLayoutRecyclerViewBinding
 import com.denniszabolotny.coverzone.models.Camera
 import java.util.*
 
@@ -19,8 +19,8 @@ class SingleCoverageRecyclerView() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
 
-        val binding: ListItemBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.list_item, parent, false)
+        val binding: ItemLayoutRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater,
+                R.layout.item_layout_recycler_view, parent, false)
 
         return MyViewHolder(binding)
     }
@@ -81,7 +81,7 @@ class SingleCoverageRecyclerView() :
 }
 
 
-class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class MyViewHolder(val binding: ItemLayoutRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(camera: Camera) {
         binding.camera=camera

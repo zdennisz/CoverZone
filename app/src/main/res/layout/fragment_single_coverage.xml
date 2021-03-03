@@ -33,7 +33,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/search_bar_background"
+        android:background="@drawable/img_background_search_view_single_coverage"
         android:queryHint="@string/searchCamera"
         app:layout_constraintCircleRadius="12dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_addCamera"

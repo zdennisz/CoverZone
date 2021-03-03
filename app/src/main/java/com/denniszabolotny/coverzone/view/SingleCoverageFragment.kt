@@ -63,9 +63,9 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                var newText = newText?.toLowerCase()
-                if (newText != null) {
-                    binding.singleCoverageAdapter!!.filter.filter(newText)
+                var newQuery = newText?.toLowerCase()
+                if (newQuery != null) {
+                    binding.singleCoverageAdapter!!.filter.filter(newQuery)
                 }
                 return true
             }

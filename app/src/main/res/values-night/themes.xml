@@ -15,6 +15,6 @@
     </style>
 
     <style name="Theme.SplashScreen" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowBackground">@drawable/img_splash_screen</item>
     </style>
 </resources>

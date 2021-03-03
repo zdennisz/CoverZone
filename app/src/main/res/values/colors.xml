@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tealSingleCamera">#02c6b2</color>
     <color name="darkBlueAcceptBtn">#162b65</color>
+    <color name="color_background_icon">#F5FFF8</color>
 </resources>
