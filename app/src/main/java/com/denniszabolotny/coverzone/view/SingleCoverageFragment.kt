@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView
 import com.denniszabolotny.coverzone.databinding.FragmentSingleCoverageBinding
@@ -26,9 +27,9 @@ import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModelFactory
 
 class SingleCoverageFragment : Fragment(), View.OnClickListener {
     private  var _binding: FragmentSingleCoverageBinding?=null
-
+    private lateinit var  adapter:SingleCoverageRecyclerView
     private lateinit var addCameraViewModel:AddCameraViewModel
-    private lateinit var singleCoverageRecyclerView: SingleCoverageRecyclerView
+
     private val binding get() = _binding!!
 
     var navController: NavController? = null
@@ -46,7 +47,6 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
         addCameraViewModel= ViewModelProvider(this,factory).get(AddCameraViewModel::class.java)
         binding.singleCoverageViewModel=addCameraViewModel
         initRecyclerView(inflater.context)
-       //binding.singleCoverageAdapter=singleCoverageRecyclerView
         binding.lifecycleOwner=viewLifecycleOwner
 
         return binding.root
@@ -85,19 +85,22 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
         _binding=null
     }
     private fun initRecyclerView(context: Context) {
-        binding.camerasRecyclerView.layoutManager = LinearLayoutManager(context)
+        adapter=SingleCoverageRecyclerView()
+        binding.singleCoverageAdapter=adapter
         binding.camerasRecyclerView.addItemDecoration( DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
-        displayCamerasList();
+        displayRecyclerViewData()
+
 
     }
 
-    private fun displayCamerasList() {
+    private fun displayRecyclerViewData() {
         addCameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            //binding.camerasRecyclerView = SingleCoverageRecyclerView(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
+            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>)
+        //binding.camerasRecyclerView = SingleCoverageRecyclerView(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
         })
     }
     private fun listItemClicked(camera: Camera) {
-        Toast.makeText(binding.camerasRecyclerView.context, "Selected camera name is ${camera.camera_name}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(binding.view.context, "Selected camera name is ${camera.camera_name}", Toast.LENGTH_SHORT).show()
        // cameraViewModel.initUpdateAndDelete(camera)
     }
 

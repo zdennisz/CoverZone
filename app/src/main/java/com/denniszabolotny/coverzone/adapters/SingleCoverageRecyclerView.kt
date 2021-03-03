@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import androidx.databinding.Bindable
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
@@ -12,19 +11,10 @@ import com.denniszabolotny.coverzone.databinding.ListItemBinding
 import com.denniszabolotny.coverzone.models.Camera
 import java.util.*
 
-class SingleCoverageRecyclerView :
-    RecyclerView.Adapter<MyViewHolder>, Filterable {
-
-    private val cameraList: List<Camera>
-    private val clickListener: (Camera) -> Unit
+class SingleCoverageRecyclerView() :
+    RecyclerView.Adapter<MyViewHolder>(), Filterable {
+    private var dataFromView:MutableList<Camera>?=null
     private lateinit var cameraFilteredList:List<Camera>
-    constructor(cameraList: List<Camera>, clickListener: (Camera) -> Unit) : super() {
-        this.cameraList = cameraList
-        this.clickListener = clickListener
-        cameraFilteredList= this.cameraList.toList()
-    }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -36,11 +26,17 @@ class SingleCoverageRecyclerView :
     }
 
     override fun getItemCount(): Int {
-        return cameraFilteredList.size
+            if(dataFromView!=null){
+                return dataFromView!!.size
+            }else{
+                return 0
+            }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(cameraFilteredList[position], clickListener)
+        if(dataFromView!=null){
+            holder.bind(dataFromView!![position])
+        }
     }
 
      override fun getFilter(): Filter {
@@ -48,7 +44,7 @@ class SingleCoverageRecyclerView :
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 if (charSearch.isEmpty()) {
-                    cameraFilteredList = cameraList
+                    cameraFilteredList = listOf()
                 } else {
                     var resultList = mutableListOf<Camera>()
                     for (row in cameraFilteredList) {
@@ -75,22 +71,21 @@ class SingleCoverageRecyclerView :
         }
     }
 
+    fun loadData(cameras:MutableList<Camera>){
+        dataFromView=cameras
+        notifyDataSetChanged()
+    }
 
 }
 
 
 class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(camera: Camera, clickListener: (Camera) -> Unit) {
-        binding.tvDetectorHeight.text = camera.detector_height
-        binding.tvDetectorWidth.text = camera.detector_width
-        binding.tvDetectorPitch.text = camera.detector_pitch
-        binding.tvFocalLength.text = camera.focalLength
-        binding.tvOffset.text = camera.angleOffset
-        binding.tvCameraName.text=camera.camera_name
-        binding.tvCameraHeight.text=camera.camera_height
-        binding.listItemLayout.setOnClickListener {
-            clickListener(camera)
-        }
+    fun bind(camera: Camera) {
+        binding.camera=camera
+      //      binding.listItemLayout.setOnClickListener {
+            //clickListener(camera)
+     //  }
+
     }
 }

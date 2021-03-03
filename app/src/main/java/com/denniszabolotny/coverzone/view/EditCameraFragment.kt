@@ -44,14 +44,14 @@ class EditCameraFragment : Fragment() {
     }
 
     private fun displayCamerasList() {
-        cameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            binding.camerasRecyclerView.adapter = SingleCoverageRecyclerView(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
-        })
+//        cameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
+//            binding.camerasRecyclerView.adapter = SingleCoverageRecyclerView()
+//        })
     }
 
     private fun listItemClicked(camera: Camera) {
         Toast.makeText(binding.camerasRecyclerView.context, "Selected camera pitch is ${camera.detector_pitch}", Toast.LENGTH_SHORT).show()
-        cameraViewModel.initUpdateAndDelete(camera)
+       // cameraViewModel.initUpdateAndDelete(camera)
     }
 
     override fun onDestroyView() {

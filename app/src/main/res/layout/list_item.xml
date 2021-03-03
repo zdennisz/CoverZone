@@ -2,7 +2,12 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+        <data>
+            <variable
+                name="camera"
+                type="com.denniszabolotny.coverzone.models.Camera" />
 
+        </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,6 +39,7 @@
                     android:gravity="start"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.detector_width}"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toStartOf="@+id/guideline11"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -48,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.detector_height}"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toStartOf="@+id/textView7"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -62,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.detector_pitch}"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_width"
                     app:layout_constraintEnd_toEndOf="@+id/textView3"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -74,6 +82,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.angleOffset}"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_pitch"
                     app:layout_constraintEnd_toEndOf="@+id/textView6"
                     app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -86,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.camera_height}"
                     app:layout_constraintBottom_toTopOf="@+id/guideline15"
                     app:layout_constraintEnd_toEndOf="@+id/textView4"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -122,8 +132,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="Camera Name"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.camera_name}"
                     app:layout_constraintBottom_toTopOf="@+id/guideline16"
                     app:layout_constraintEnd_toStartOf="@+id/guideline12"
                     app:layout_constraintStart_toEndOf="@+id/guideline6"
@@ -146,6 +156,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="@dimen/textViewSmallViewHolder"
+                    android:text="@={camera.focalLength}"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_camera_height"
                     app:layout_constraintEnd_toEndOf="@+id/textView5"
                     app:layout_constraintStart_toStartOf="@+id/textView5"

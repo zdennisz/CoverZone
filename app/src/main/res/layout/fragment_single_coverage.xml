@@ -42,7 +42,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cameras_recycler_view"
+            app:setAdapter="@{singleCoverageAdapter}"
             android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
