@@ -14,7 +14,7 @@ import java.util.*
 class SingleCoverageRecyclerView() :
     RecyclerView.Adapter<MyViewHolder>(), Filterable {
     private var dataFromView:MutableList<Camera>?=null
-    private lateinit var cameraFilteredList:List<Camera>
+    private var cameraFilteredList:MutableList<Camera>?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -26,16 +26,16 @@ class SingleCoverageRecyclerView() :
     }
 
     override fun getItemCount(): Int {
-            if(dataFromView!=null){
-                return dataFromView!!.size
+            if(cameraFilteredList!=null){
+                return cameraFilteredList!!.size
             }else{
                 return 0
             }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        if(dataFromView!=null){
-            holder.bind(dataFromView!![position])
+        if(cameraFilteredList!=null){
+            holder.bind(cameraFilteredList!![position])
         }
     }
 
@@ -44,10 +44,10 @@ class SingleCoverageRecyclerView() :
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 if (charSearch.isEmpty()) {
-                    cameraFilteredList = listOf()
+                    cameraFilteredList = dataFromView!!
                 } else {
                     var resultList = mutableListOf<Camera>()
-                    for (row in cameraFilteredList) {
+                    for (row in cameraFilteredList!!) {
                         if (row.camera_name.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(
                                 Locale.ROOT
                             )
@@ -64,7 +64,8 @@ class SingleCoverageRecyclerView() :
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                cameraFilteredList = results?.values as List<Camera>
+                cameraFilteredList = results?.values as MutableList<Camera>
+
                 notifyDataSetChanged()
             }
 
@@ -73,6 +74,7 @@ class SingleCoverageRecyclerView() :
 
     fun loadData(cameras:MutableList<Camera>){
         dataFromView=cameras
+        cameraFilteredList=cameras
         notifyDataSetChanged()
     }
 
