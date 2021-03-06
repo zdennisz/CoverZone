@@ -54,10 +54,18 @@ class AddCamera : Fragment(),View.OnClickListener {
         when(v!!.id){
             binding.btnCancelAction.id->navController!!.navigate(R.id.action_addCamera_to_singleCoverageFragment)
             binding.btnAddCamera.id -> {
-                binding.addCameraViewModel!!.saveNewCamera()
-                Snackbar.make(v,"Camera was added successfully",Snackbar.LENGTH_SHORT).show()
+                when(binding.addCameraViewModel!!.saveNewCamera()){
+                    true->{
+                        Snackbar.make(v,"Camera was added successfully",Snackbar.LENGTH_SHORT).show()
+                        navController!!.navigate(R.id.action_addCamera_to_singleCoverageFragment)
+                    }
+                    false->{
+                        Snackbar.make(v,"Please fill all the fields",Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+
                 hideKeyboard(v)
-                navController!!.navigate(R.id.action_addCamera_to_singleCoverageFragment)
+
             }
         }
     }

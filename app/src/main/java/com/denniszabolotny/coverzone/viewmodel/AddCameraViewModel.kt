@@ -1,6 +1,5 @@
 package com.denniszabolotny.coverzone.viewmodel
 
-import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.models.Camera
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class AddCameraViewModel(private val repository: CameraRepository) : ViewModel(), Observable {
@@ -18,7 +16,8 @@ class AddCameraViewModel(private val repository: CameraRepository) : ViewModel()
     private lateinit var cameraToUpdateOrDelete: Camera
 
     @Bindable
-    val cameraName=MutableLiveData<String>()
+    val cameraName = MutableLiveData<String>()
+
     @Bindable
     val offset = MutableLiveData<String>()
 
@@ -35,7 +34,7 @@ class AddCameraViewModel(private val repository: CameraRepository) : ViewModel()
     val detectorPitch = MutableLiveData<String>()
 
     @Bindable
-    val cameraHeight= MutableLiveData<String>()
+    val cameraHeight = MutableLiveData<String>()
 
     @Bindable
     val saveOrUpdateButtonText = MutableLiveData<String>()
@@ -48,64 +47,58 @@ class AddCameraViewModel(private val repository: CameraRepository) : ViewModel()
         clearAllOrDeletAllButtonText.value = "Clear all"
     }
 
-    fun saveNewCamera(){
-        val offsetText: String
-        val detectorWidthText: String
-        val detectorHeightText: String
-        val detectorPitchText: String
-        val focalLengthText: String
-        val cameraHeightText:String
-        val cameraNameText:String
+    fun saveNewCamera(): Boolean {
+        when (verifyDataNewCamera()) {
+            true -> {
+                var camera = Camera(
+                    0,
+                    offset.value!!,
+                    focalLength.value!!,
+                    detectorWidth.value!!,
+                    detectorHeight.value!!,
+                    detectorPitch.value!!,
+                    cameraHeight.value!!,
+                    cameraName.value!!
+                )
+                insert(camera)
+                offset.value = null
+                detectorWidth.value = null
+                detectorHeight.value = null
+                detectorPitch.value = null
+                focalLength.value = null
+                cameraHeight.value = null
+                cameraName.value = null
+                return true
+            }
 
-        if (offset.value == null) {
-            offsetText = ""
-        } else {
-            offsetText = offset.value!!
-        }
+            false -> {
+                return false
+            }
 
-        if (detectorWidth.value == null) {
-            detectorWidthText = ""
-        } else {
-            detectorWidthText = detectorWidth.value!!
         }
-        if (detectorHeight.value == null) {
-            detectorHeightText = ""
-        } else {
-            detectorHeightText = detectorHeight.value!!
-        }
-        if (detectorPitch.value == null) {
-            detectorPitchText = ""
-        } else {
-            detectorPitchText = detectorPitch.value!!
-        }
-        if (focalLength.value == null) {
-            focalLengthText = ""
-        } else {
-            focalLengthText = focalLength.value!!
-        }
-        if (cameraHeight.value == null) {
-            cameraHeightText = ""
-        } else {
-            cameraHeightText = cameraHeight.value!!
-        }
-
-        if (cameraName.value == null) {
-            cameraNameText = ""
-        } else {
-            cameraNameText = cameraHeight.value!!
-        }
-        insert(Camera(0, offsetText, focalLengthText, detectorWidthText, detectorHeightText, detectorPitchText,cameraHeightText,cameraNameText))
-
-
-        offset.value = null
-        detectorWidth.value = null
-        detectorHeight.value = null
-        detectorPitch.value = null
-        focalLength.value = null
-        cameraHeight.value=null
-        cameraName.value=null
 
     }
+
+    fun verifyDataNewCamera(): Boolean {
+
+        if (offset.value == null) {
+            return false
+        } else if (detectorWidth.value == null) {
+            return false
+        } else if (detectorHeight.value == null) {
+            return false
+        } else if (detectorPitch.value == null) {
+            return false
+        } else if (focalLength.value == null) {
+            return false
+        } else if (cameraHeight.value == null) {
+            return false
+        } else if (cameraName.value == null) {
+            return false
+        }
+        return true
+    }
+
 
 //    fun saveOrUpdate() {
 //
@@ -202,17 +195,17 @@ class AddCameraViewModel(private val repository: CameraRepository) : ViewModel()
         }
     }
 
-    fun initUpdateAndDelete(camera: Camera) {
-        offset.value = camera.angleOffset
-        detectorHeight.value = camera.detector_height
-        detectorWidth.value = camera.detector_width
-        detectorPitch.value = camera.detector_pitch
-        focalLength.value = camera.focalLength
-        isUpdateOrDelte = true
-        cameraToUpdateOrDelete = camera
-        saveOrUpdateButtonText.value = "Update"
-        clearAllOrDeletAllButtonText.value = "Delete"
-    }
+//    fun initUpdateAndDelete(camera: Camera) {
+//        offset.value = camera.angleOffset
+//        detectorHeight.value = camera.detector_height
+//        detectorWidth.value = camera.detector_width
+//        detectorPitch.value = camera.detector_pitch
+//        focalLength.value = camera.focalLength
+//        isUpdateOrDelte = true
+//        cameraToUpdateOrDelete = camera
+//        saveOrUpdateButtonText.value = "Update"
+//        clearAllOrDeletAllButtonText.value = "Delete"
+//    }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 

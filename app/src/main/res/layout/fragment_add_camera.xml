@@ -17,11 +17,12 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/cameraName"
+        android:nextFocusDown="@id/textInputDetectorHeight"
         android:textColorHint="@color/darkBlueAcceptBtn"
         app:boxStrokeColor="@color/darkBlueAcceptBtn"
         app:hintTextColor="@color/darkBlueAcceptBtn"
@@ -34,31 +35,42 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:inputType="text"
-            android:textSize="@dimen/textSizeInputSmall"
-            android:text="@={addCameraViewModel.cameraName}" />
+            android:text="@={addCameraViewModel.cameraName}"
+            android:textSize="@dimen/textSizeInputSmall" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/textInputDetectorHeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/detectorHeight"
+        android:nextFocusLeft="@id/textInputDetectorWidth"
+        android:nextFocusRight="@id/textInputDetectorWidth"
+        android:nextFocusUp="@id/textInputDetectorWidth"
+        android:nextFocusDown="@id/textInputDetectorWidth"
+        android:nextFocusForward="@id/textInputDetectorWidth"
         android:textColorHint="@color/darkBlueAcceptBtn"
         app:boxStrokeColor="@color/darkBlueAcceptBtn"
         app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:imeOptions="actionNext"
             android:inputType="number"
-            android:textSize="@dimen/textSizeInputExtraSmall"
-            android:text="@={addCameraViewModel.detectorHeight}"/>
+            android:nextFocusLeft="@id/textInputDetectorWidth"
+            android:nextFocusRight="@id/textInputDetectorWidth"
+            android:nextFocusUp="@id/textInputDetectorWidth"
+            android:nextFocusDown="@id/textInputDetectorWidth"
+            android:nextFocusForward="@id/textInputDetectorWidth"
+            android:text="@={addCameraViewModel.detectorHeight}"
+            android:textSize="@dimen/textSizeInputExtraSmall" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,40 +80,45 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/x"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputDetectorWidth"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/textInputDetectorWidth"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout2"
+        app:layout_constraintStart_toEndOf="@+id/textInputDetectorHeight"
+        app:layout_constraintTop_toTopOf="@+id/textInputDetectorWidth"
         app:layout_constraintVertical_bias="0.8" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/textInputDetectorWidth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/detectorWidth"
 
+        android:nextFocusLeft="@id/textInputDetectorPitch"
+        android:nextFocusRight="@id/textInputDetectorPitch"
+        android:nextFocusUp="@id/textInputDetectorPitch"
+        android:nextFocusDown="@id/textInputDetectorPitch"
+        android:nextFocusForward="@id/textInputDetectorPitch"
         android:textColorHint="@color/darkBlueAcceptBtn"
         app:boxStrokeColor="@color/darkBlueAcceptBtn"
         app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:inputType="number"
-            android:textSize="@dimen/textSizeInputExtraSmall"
-            android:text="@={addCameraViewModel.detectorWidth}"/>
+            android:text="@={addCameraViewModel.detectorWidth}"
+            android:textSize="@dimen/textSizeInputExtraSmall" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/textInputDetectorPitch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/detectorPitch"
@@ -112,7 +129,7 @@
         app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/textInputDetectorHeight">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -125,7 +142,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout6"
+        android:id="@+id/textInputFocalLength"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -135,7 +152,7 @@
         app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+        app:layout_constraintTop_toBottomOf="@+id/textInputDetectorPitch">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -148,7 +165,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout7"
+        android:id="@+id/textInputCameraHeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/cameraHeight"
@@ -158,7 +175,7 @@
         app:hintTextColor="@color/darkBlueAcceptBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+        app:layout_constraintTop_toBottomOf="@+id/textInputFocalLength">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -171,9 +188,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout8"
+        android:id="@+id/textInputOffset"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:hint="@string/offset"
         android:textColorHint="@color/darkBlueAcceptBtn"
@@ -182,7 +199,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+        app:layout_constraintTop_toBottomOf="@+id/textInputCameraHeight">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

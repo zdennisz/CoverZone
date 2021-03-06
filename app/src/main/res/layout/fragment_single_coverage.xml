@@ -2,14 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<data>
-    <variable
-        name="singleCoverageViewModel"
-        type="com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel" />
-    <variable
-        name="singleCoverageAdapter"
-        type="com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView" />
-</data>
+
+    <data>
+
+        <variable
+            name="singleCoverageViewModel"
+            type="com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel" />
+
+        <variable
+            name="singleCoverageAdapter"
+            type="com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -27,56 +31,56 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/img_background_search_view_single_coverage"
-        android:queryHint="@string/searchCamera"
-        app:layout_constraintCircleRadius="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_addCamera"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/img_background_search_view_single_coverage"
+            android:queryHint="@string/searchCamera"
+            app:layout_constraintCircleRadius="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_addCamera"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cameras_recycler_view"
-            app:setAdapter="@{singleCoverageAdapter}"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view">
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:setAdapter="@{singleCoverageAdapter}">
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/btn_addCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:minWidth="64dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="@string/plusSign"
-        app:backgroundTint="@color/darkBlueAcceptBtn"
-        app:layout_constraintBottom_toBottomOf="@+id/searchView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/searchView" />
+        <Button
+            android:id="@+id/btn_addCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:minWidth="64dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/plusSign"
+            app:backgroundTint="@color/darkBlueAcceptBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/searchView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchView" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
 
         <TextView
             android:id="@+id/textView8"
