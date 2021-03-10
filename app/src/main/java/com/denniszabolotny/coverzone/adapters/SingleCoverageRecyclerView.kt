@@ -1,5 +1,6 @@
 package com.denniszabolotny.coverzone.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -15,14 +16,14 @@ class SingleCoverageRecyclerView() :
     RecyclerView.Adapter<MyViewHolder>(), Filterable {
     private var dataFromView:MutableList<Camera>?=null
     private var cameraFilteredList:MutableList<Camera>?=null
-
+    private var _onClick: ((Camera) -> Unit?)? =null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val binding: ItemLayoutRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater,
                 R.layout.item_layout_recycler_view, parent, false)
 
-        return MyViewHolder(binding)
+        return MyViewHolder(binding, _onClick as (Camera) -> Unit)
     }
 
     override fun getItemCount(): Int {
@@ -73,22 +74,24 @@ class SingleCoverageRecyclerView() :
         }
     }
 
-    fun loadData(cameras:MutableList<Camera>){
+    fun loadData(cameras:MutableList<Camera>,onClick: (Camera) -> Unit){
         dataFromView=cameras
         cameraFilteredList=cameras
+        _onClick=onClick
         notifyDataSetChanged()
     }
 
 }
 
 
-class MyViewHolder(val binding: ItemLayoutRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root) {
+class MyViewHolder(val binding: ItemLayoutRecyclerViewBinding,val onClick:(Camera)->Unit) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(camera: Camera) {
         binding.camera=camera
-      //      binding.listItemLayout.setOnClickListener {
-            //clickListener(camera)
-     //  }
+            binding.listItemLayout.setOnClickListener {
+            onClick(camera)
+
+       }
 
     }
 }

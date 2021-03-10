@@ -13,8 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView
 import com.denniszabolotny.coverzone.databinding.FragmentSingleCoverageBinding
@@ -22,7 +20,7 @@ import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
-import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModelFactory
+import com.denniszabolotny.coverzone.viewModelFactorys.CamerasViewModelFactory
 
 
 class SingleCoverageFragment : Fragment(), View.OnClickListener {
@@ -43,7 +41,7 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
 
         val dao= CameraDatabase.getInstace(inflater.context).cameraDAO
         val repository= CameraRepository(dao)
-        val factory= AddCameraViewModelFactory(repository)
+        val factory= CamerasViewModelFactory(repository)
         addCameraViewModel= ViewModelProvider(this,factory).get(AddCameraViewModel::class.java)
         binding.singleCoverageViewModel=addCameraViewModel
         initRecyclerView(inflater.context)
@@ -95,13 +93,13 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
 
     private fun displayRecyclerViewData() {
         addCameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>)
-        //binding.camerasRecyclerView = SingleCoverageRecyclerView(it, { selectedItem: Camera -> listItemClicked(selectedItem) })
+            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>,{ selectedItem: Camera -> listItemClicked(selectedItem) })
+
         })
     }
     private fun listItemClicked(camera: Camera) {
         Toast.makeText(binding.view.context, "Selected camera name is ${camera.camera_name}", Toast.LENGTH_SHORT).show()
-       // cameraViewModel.initUpdateAndDelete(camera)
+
     }
 
 }

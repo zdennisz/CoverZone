@@ -1,13 +1,11 @@
 package com.denniszabolotny.coverzone.view
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -17,7 +15,7 @@ import com.denniszabolotny.coverzone.databinding.FragmentAddCameraBinding
 import com.denniszabolotny.coverzone.db.CameraDatabase
 import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
-import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModelFactory
+import com.denniszabolotny.coverzone.viewModelFactorys.CamerasViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
 class AddCamera : Fragment(),View.OnClickListener {
@@ -35,7 +33,7 @@ class AddCamera : Fragment(),View.OnClickListener {
 
         val dao= CameraDatabase.getInstace(inflater.context).cameraDAO
         val repository= CameraRepository(dao)
-        val factory= AddCameraViewModelFactory(repository)
+        val factory= CamerasViewModelFactory(repository)
         addCameraViewModel= ViewModelProvider(this,factory).get(AddCameraViewModel::class.java)
         binding.addCameraViewModel=addCameraViewModel
         binding.lifecycleOwner=viewLifecycleOwner

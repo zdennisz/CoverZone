@@ -38,4 +38,7 @@
     <!--Recycler view view holder strings -->
     <string name="detectorSize">Detector Size</string>
 
+    <!--View Coverage Fragment strings -->
+    <string name="topTab">Top</string>
+    <string name="sideTab">Side</string>
 </resources>
