@@ -22,7 +22,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardBottmHeight">
-
+       <!--      <include
+                android:id="@+id/cardViewBottom"
+                layout="@layout/item_layout_recycler_view"/>
+        -->
             <Button
                 android:id="@+id/expandButton"
                 android:layout_width="wrap_content"

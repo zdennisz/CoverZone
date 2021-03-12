@@ -9,14 +9,21 @@ import com.denniszabolotny.coverzone.models.Camera
 
 class ViewCoverageViewModel: ViewModel(),Observable {
 
-     val cameraToShow:LiveData<Camera>
-        get()=_cameraToShow
+    private var _cameraToShow=MutableLiveData<Camera>()
+    val cameraToShow:LiveData<Camera>
+        get()
+        {
+            return _cameraToShow
+        }
 
-     private val _cameraToShow=MutableLiveData<Camera>()
 
-     fun loadCamera(camera: Camera){
+    fun loadCamera(camera: Camera){
          _cameraToShow.value=camera
      }
+
+    fun getCamera():LiveData<Camera>{
+        return cameraToShow
+    }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
