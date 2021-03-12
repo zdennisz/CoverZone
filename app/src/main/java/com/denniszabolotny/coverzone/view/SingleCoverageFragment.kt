@@ -21,12 +21,14 @@ import com.denniszabolotny.coverzone.db.CameraRepository
 import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
 import com.denniszabolotny.coverzone.viewModelFactorys.CamerasViewModelFactory
+import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
 
 
 class SingleCoverageFragment : Fragment(), View.OnClickListener {
     private  var _binding: FragmentSingleCoverageBinding?=null
     private lateinit var  adapter:SingleCoverageRecyclerView
     private lateinit var addCameraViewModel:AddCameraViewModel
+    private lateinit var viewCoverageViewModel:ViewCoverageViewModel
 
     private val binding get() = _binding!!
 
@@ -42,9 +44,16 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
         val dao= CameraDatabase.getInstace(inflater.context).cameraDAO
         val repository= CameraRepository(dao)
         val factory= CamerasViewModelFactory(repository)
+        //view model for all the cameras
         addCameraViewModel= ViewModelProvider(this,factory).get(AddCameraViewModel::class.java)
+        //view model for the selected camera
+        viewCoverageViewModel=ViewModelProvider(this).get(ViewCoverageViewModel::class.java)
+
         binding.singleCoverageViewModel=addCameraViewModel
+        binding.currentCameraViewModel=viewCoverageViewModel
+
         initRecyclerView(inflater.context)
+
         binding.lifecycleOwner=viewLifecycleOwner
 
         return binding.root
@@ -93,12 +102,20 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
 
     private fun displayRecyclerViewData() {
         addCameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>,{ selectedItem: Camera -> listItemClicked(selectedItem) })
+            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>,{ selectedItem: Camera -> itemClicked(selectedItem) },{  selectedItem: Camera -> nextButtonClicked(selectedItem)})
 
         })
     }
-    private fun listItemClicked(camera: Camera) {
-        Toast.makeText(binding.view.context, "Selected camera name is ${camera.camera_name}", Toast.LENGTH_SHORT).show()
+    private fun itemClicked(camera: Camera) {
+        //next button click navigation
+        navController!!.navigate(R.id.action_singleCoverageFragment_to_editCameraFragment)
+    }
+
+    private  fun nextButtonClicked(camera:Camera){
+        //load the selected camera to operate on
+        binding.currentCameraViewModel?.loadCamera(camera)
+        //next button click navigation
+        navController!!.navigate(R.id.action_singleCoverageFragment_to_viewCoverageFragment)
 
     }
 

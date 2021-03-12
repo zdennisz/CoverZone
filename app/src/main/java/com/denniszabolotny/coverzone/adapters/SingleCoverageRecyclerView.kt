@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.databinding.ItemLayoutRecyclerViewBinding
 import com.denniszabolotny.coverzone.models.Camera
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 class SingleCoverageRecyclerView() :
@@ -17,13 +18,15 @@ class SingleCoverageRecyclerView() :
     private var dataFromView:MutableList<Camera>?=null
     private var cameraFilteredList:MutableList<Camera>?=null
     private var _onClick: ((Camera) -> Unit?)? =null
+    private var _nextButtonClicked:((Camera)->Unit?)?=null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val binding: ItemLayoutRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater,
                 R.layout.item_layout_recycler_view, parent, false)
 
-        return MyViewHolder(binding, _onClick as (Camera) -> Unit)
+        return MyViewHolder(binding, _onClick as (Camera) -> Unit,_nextButtonClicked as (Camera)->Unit)
     }
 
     override fun getItemCount(): Int {
@@ -66,30 +69,40 @@ class SingleCoverageRecyclerView() :
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 @Suppress("UNCHECKED_CAST")
-                cameraFilteredList = results?.values as MutableList<Camera>
+                when(results!!){
+                cameraFilteredList -> {
+                    results?.values as MutableList<Camera>
+                    notifyDataSetChanged()
+                }
 
-                notifyDataSetChanged()
+                else -> cameraFilteredList=dataFromView
+                }
+
             }
 
         }
     }
 
-    fun loadData(cameras:MutableList<Camera>,onClick: (Camera) -> Unit){
+    fun loadData(cameras:MutableList<Camera>,onClick: (Camera) -> Unit,nextButtonClicked:(Camera)->Unit){
         dataFromView=cameras
         cameraFilteredList=cameras
         _onClick=onClick
+        _nextButtonClicked=nextButtonClicked
         notifyDataSetChanged()
     }
 
 }
 
 
-class MyViewHolder(val binding: ItemLayoutRecyclerViewBinding,val onClick:(Camera)->Unit) : RecyclerView.ViewHolder(binding.root) {
+class MyViewHolder(val binding: ItemLayoutRecyclerViewBinding,val onClick:(Camera)->Unit,val nextButtonClicked:(Camera)->Unit) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(camera: Camera) {
         binding.camera=camera
+            binding.imageButton.setOnClickListener{
+                nextButtonClicked(camera)
+            }
             binding.listItemLayout.setOnClickListener {
-            onClick(camera)
+                onClick(camera)
 
        }
 
