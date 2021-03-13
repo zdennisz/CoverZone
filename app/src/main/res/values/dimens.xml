@@ -7,4 +7,6 @@
     <dimen name="textSizeInputExtraSmall">12dp</dimen>
     <dimen name="textViewSmallViewHolder">14dp</dimen>
 
+    <!--View Coverage text -->
+    <dimen name="viewCoverageTextSize">14dp</dimen>
 </resources>

@@ -17,25 +17,15 @@
             android:id="@+id/cameraBottomTab"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/purple_700"
+            android:background="@color/viewCoverageBackgroundColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardBottmHeight">
-       <!--      <include
+           <include
                 android:id="@+id/cardViewBottom"
-                layout="@layout/item_layout_recycler_view"/>
-        -->
-            <Button
-                android:id="@+id/expandButton"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="159dp"
-                android:layout_marginEnd="160dp"
-                android:text="Expand"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                layout="@layout/camera_layout_view_coverage"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.tabs.TabLayout
@@ -45,7 +35,9 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabIndicatorColor="@color/viewCoverageBackgroundColor"
+            app:tabTextColor="@color/viewCoverageBackgroundColor">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -71,7 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.90" />
+            app:layout_constraintGuide_percent="0.98" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

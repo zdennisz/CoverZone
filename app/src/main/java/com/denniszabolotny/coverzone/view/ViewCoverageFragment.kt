@@ -18,6 +18,7 @@ import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewModelFactorys.SingleCameraViewModelFactory
 import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_view_coverage.view.*
 
 
 class ViewCoverageFragment : Fragment() {
@@ -39,22 +40,18 @@ class ViewCoverageFragment : Fragment() {
         val factory=SingleCameraViewModelFactory()
         viewModel=ViewModelProvider(requireActivity(),factory).get(ViewCoverageViewModel::class.java)
         binding.viewCoverageViewModel=viewModel
-        binding.expandButton.setOnClickListener {
+        binding.cardViewBottom.listItemLayout.setOnClickListener {
             when(boolean){
-                true->   {
-                    binding.cardBottmHeight.setGuidelinePercent(0.90F)
-                    boolean=!boolean
-                }
-                false-> {
-                    binding.cardBottmHeight.setGuidelinePercent(0.5F)
-                    boolean=!boolean
-                }
+            true->   {
+                binding.cardBottmHeight.setGuidelinePercent(0.98F)
+                boolean=!boolean
             }
-
-
-
+            false-> {
+                binding.cardBottmHeight.setGuidelinePercent(0.75F)
+                boolean=!boolean
+            }
         }
-
+        }
 
         return binding.root
     }
@@ -63,14 +60,10 @@ class ViewCoverageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
         viewModel.getCamera().let {
-            binding.expandButton.text= it.value!!.camera_name
+                binding.cardViewBottom.camera=it.value
         }
 
     }
-        //binding.cardViewBottom.camera= Camera(0,"20","20","20","20","20","20","20")
-        //Snackbar.make(view,"Camera loaded is ${binding.viewCoverageViewModel!!.cameraToShow.value!!.camera_name}",Snackbar.LENGTH_SHORT).show()
-        //val camera= Camera(0,"1","2","4","5","5","3","Dennis")
-        //binding.viewCoverageViewModel.loadCamera(camera)
 
 
 
