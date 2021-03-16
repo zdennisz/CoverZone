@@ -13,20 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/cameraBottomTab"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/viewCoverageBackgroundColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cardBottmHeight">
+            app:layout_constraintStart_toStartOf="parent">
            <include
-                android:id="@+id/cardViewBottom"
-                layout="@layout/camera_layout_view_coverage"/>
+            android:id="@+id/cameraLayout"
+               layout="@layout/camera_layout_view_coverage"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -57,13 +55,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.07" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/cardBottmHeight"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.98" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

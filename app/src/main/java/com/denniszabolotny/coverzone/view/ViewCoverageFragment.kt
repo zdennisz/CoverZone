@@ -17,7 +17,9 @@ import com.denniszabolotny.coverzone.databinding.FragmentViewCoverageBinding
 import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewModelFactorys.SingleCameraViewModelFactory
 import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.camera_layout_view_coverage.view.*
 import kotlinx.android.synthetic.main.fragment_view_coverage.view.*
 
 
@@ -26,7 +28,7 @@ class ViewCoverageFragment : Fragment() {
     private lateinit var viewModel:ViewCoverageViewModel
     private val binding get()=_binding!!
     private var boolean:Boolean=false
-
+    private var mBottomSheet: BottomSheetBehavior<View>?=null
     var navController:NavController?=null
 
     override fun onCreateView(
@@ -40,17 +42,18 @@ class ViewCoverageFragment : Fragment() {
         val factory=SingleCameraViewModelFactory()
         viewModel=ViewModelProvider(requireActivity(),factory).get(ViewCoverageViewModel::class.java)
         binding.viewCoverageViewModel=viewModel
-        binding.cardViewBottom.listItemLayout.setOnClickListener {
+        mBottomSheet=BottomSheetBehavior.from((binding.cameraBottomTab.cardViewBottom))
+            binding.cameraBottomTab.cardViewBottom.setOnClickListener {
             when(boolean){
             true->   {
-                binding.cardBottmHeight.setGuidelinePercent(0.98F)
+                mBottomSheet!!.state=BottomSheetBehavior.STATE_EXPANDED
                 boolean=!boolean
             }
             false-> {
-                binding.cardBottmHeight.setGuidelinePercent(0.75F)
+                mBottomSheet!!.state=BottomSheetBehavior.STATE_COLLAPSED
                 boolean=!boolean
             }
-        }
+            }
         }
 
         return binding.root
@@ -60,7 +63,7 @@ class ViewCoverageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
         viewModel.getCamera().let {
-                binding.cardViewBottom.camera=it.value
+            binding.cameraLayout.camera=it.value
         }
 
     }
