@@ -20,6 +20,7 @@ import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.camera_layout_view_coverage.view.*
+import kotlinx.android.synthetic.main.fragment_view_coverage.*
 import kotlinx.android.synthetic.main.fragment_view_coverage.view.*
 
 
@@ -42,8 +43,8 @@ class ViewCoverageFragment : Fragment() {
         val factory=SingleCameraViewModelFactory()
         viewModel=ViewModelProvider(requireActivity(),factory).get(ViewCoverageViewModel::class.java)
         binding.viewCoverageViewModel=viewModel
-        mBottomSheet=BottomSheetBehavior.from((binding.cameraBottomTab.cardViewBottom))
-            binding.cameraBottomTab.cardViewBottom.setOnClickListener {
+        mBottomSheet=BottomSheetBehavior.from((binding.cameraBottomTab.cameraViewModelBind))
+            binding.cameraBottomTab.cameraViewModelBind.setOnClickListener {
             when(boolean){
             true->   {
                 mBottomSheet!!.state=BottomSheetBehavior.STATE_EXPANDED
@@ -63,7 +64,7 @@ class ViewCoverageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
         viewModel.getCamera().let {
-            binding.cameraLayout.camera=it.value
+           // binding.camera=it.value
         }
 
     }

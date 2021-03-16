@@ -6,6 +6,9 @@
         <variable
             name="viewCoverageViewModel"
             type="com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel" />
+        <variable
+            name="camera"
+            type="com.denniszabolotny.coverzone.models.Camera" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +24,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
            <include
-            android:id="@+id/cameraLayout"
-               layout="@layout/camera_layout_view_coverage"/>
+            android:id="@+id/cameraViewModelBind"
+               layout="@layout/camera_layout_view_coverage" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
