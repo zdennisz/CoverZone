@@ -13,12 +13,15 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.denniszabolotny.coverzone.R
+import com.denniszabolotny.coverzone.adapters.ViewPagerAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentViewCoverageBinding
 import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewModelFactorys.SingleCameraViewModelFactory
 import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.camera_layout_view_coverage.view.*
 import kotlinx.android.synthetic.main.fragment_view_coverage.*
 import kotlinx.android.synthetic.main.fragment_view_coverage.view.*
@@ -56,7 +59,13 @@ class ViewCoverageFragment : Fragment() {
             }
             }
         }
-
+        binding.viewPager.adapter=ViewPagerAdapter()
+        TabLayoutMediator(binding.tabLayout,binding.viewPager,object: TabLayoutMediator.TabConfigurationStrategy {
+            override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+               //style each tab
+                tab.setText("Tab ${position}")
+            }
+        }).attach()
         return binding.root
     }
 
