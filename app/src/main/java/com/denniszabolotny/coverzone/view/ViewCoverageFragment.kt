@@ -64,7 +64,7 @@ class ViewCoverageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
         viewModel.getCamera().let {
-           // binding.camera=it.value
+            binding.camera=it.value
         }
 
     }

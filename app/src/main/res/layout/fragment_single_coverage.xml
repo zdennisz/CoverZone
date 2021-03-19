@@ -8,7 +8,6 @@
         <variable
             name="singleCoverageViewModel"
             type="com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel" />
-
         <variable
             name="singleCoverageAdapter"
             type="com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView" />

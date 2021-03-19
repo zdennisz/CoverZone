@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="camera"
+            name="selectedCamera"
             type="com.denniszabolotny.coverzone.models.Camera" />
 
     </data>
@@ -56,7 +56,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
-                    android:text="@={camera.detector_width}"
+                    android:text="@={selectedCamera.detector_width}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -72,7 +72,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="@={camera.detector_height}"
+                    android:text="@={selectedCamera.detector_height}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -88,7 +88,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@={camera.detector_pitch}"
+                    android:text="@={selectedCamera.detector_pitch}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_width"
@@ -102,7 +102,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@={camera.angleOffset}"
+                    android:text="@={selectedCamera.angleOffset}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_detector_pitch"
@@ -116,7 +116,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@={camera.camera_height}"
+                    android:text="@={selectedCamera.camera_height}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBottom_toTopOf="@+id/guideline15"
@@ -129,7 +129,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="@={camera.camera_name}"
+                    android:text="@={selectedCamera.camera_name}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBottom_toTopOf="@+id/guideline16"
@@ -154,7 +154,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@={camera.focalLength}"
+                    android:text="@={selectedCamera.focalLength}"
                     android:textColor="@color/viewCoverageTextColor"
                     android:textSize="@dimen/viewCoverageTextSize"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_camera_height"
