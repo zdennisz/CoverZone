@@ -1,36 +1,14 @@
 package com.denniszabolotny.coverzone.viewmodel
 
 import androidx.databinding.Bindable
-import androidx.databinding.Observable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.denniszabolotny.coverzone.models.Camera
 
-class ViewCoverageViewModel: ViewModel(),Observable {
-
-    private var _cameraToShow=MutableLiveData<Camera>()
-    val cameraToShow:LiveData<Camera>
-        get()
-        {
-            return _cameraToShow
-        }
+class ViewCoverageViewModel: ViewModel() {
 
 
-    fun loadCamera(camera: Camera){
-         _cameraToShow.value=camera
-     }
+    //here is where we preform all the calculations for the top and the side view
 
-    fun getCamera():LiveData<Camera>{
-        return cameraToShow
-    }
 
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-
-    }
-
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-
-    }
 
 }

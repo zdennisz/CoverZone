@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewCoverageViewModel"
-            type="com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel" />
+            type="com.denniszabolotny.coverzone.viewmodel.SharedViewCoverageViewModel" />
         <variable
             name="camera"
             type="com.denniszabolotny.coverzone.models.Camera" />

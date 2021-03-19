@@ -13,7 +13,7 @@
             type="com.denniszabolotny.coverzone.adapters.SingleCoverageRecyclerView" />
         <variable
             name="currentCameraViewModel"
-            type="com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel" />
+            type="com.denniszabolotny.coverzone.viewmodel.SharedViewCoverageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

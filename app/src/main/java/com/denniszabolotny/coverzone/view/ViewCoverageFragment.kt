@@ -5,21 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.adapters.ViewPagerAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentViewCoverageBinding
-import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewModelFactorys.SingleCameraViewModelFactory
-import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
+import com.denniszabolotny.coverzone.viewmodel.SharedViewCoverageViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.camera_layout_view_coverage.view.*
@@ -29,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_view_coverage.view.*
 
 class ViewCoverageFragment : Fragment() {
     private var _binding:FragmentViewCoverageBinding?=null
-    private lateinit var viewModel:ViewCoverageViewModel
+    private lateinit var viewModelShared:SharedViewCoverageViewModel
     private val binding get()=_binding!!
     private var boolean:Boolean=false
     private var mBottomSheet: BottomSheetBehavior<View>?=null
@@ -44,8 +38,8 @@ class ViewCoverageFragment : Fragment() {
 
 
         val factory=SingleCameraViewModelFactory()
-        viewModel=ViewModelProvider(requireActivity(),factory).get(ViewCoverageViewModel::class.java)
-        binding.viewCoverageViewModel=viewModel
+        viewModelShared=ViewModelProvider(requireActivity(),factory).get(SharedViewCoverageViewModel::class.java)
+        binding.viewCoverageViewModel=viewModelShared
         mBottomSheet=BottomSheetBehavior.from((binding.cameraBottomTab.cameraViewModelBind))
             binding.cameraBottomTab.cameraViewModelBind.setOnClickListener {
             when(boolean){
@@ -72,7 +66,7 @@ class ViewCoverageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
-        viewModel.getCamera().let {
+        viewModelShared.getCamera().let {
             binding.camera=it.value
         }
 

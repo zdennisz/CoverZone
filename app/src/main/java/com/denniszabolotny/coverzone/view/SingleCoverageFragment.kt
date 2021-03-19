@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -23,7 +21,7 @@ import com.denniszabolotny.coverzone.models.Camera
 import com.denniszabolotny.coverzone.viewmodel.AddCameraViewModel
 import com.denniszabolotny.coverzone.viewModelFactorys.CamerasViewModelFactory
 import com.denniszabolotny.coverzone.viewModelFactorys.SingleCameraViewModelFactory
-import com.denniszabolotny.coverzone.viewmodel.ViewCoverageViewModel
+import com.denniszabolotny.coverzone.viewmodel.SharedViewCoverageViewModel
 import java.util.*
 
 
@@ -31,7 +29,7 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
     private  var _binding: FragmentSingleCoverageBinding?=null
     private lateinit var  adapter:SingleCoverageRecyclerView
     private lateinit var addCameraViewModel:AddCameraViewModel
-    private lateinit var viewCoverageViewModel:ViewCoverageViewModel
+    private lateinit var sharedViewCoverageViewModel:SharedViewCoverageViewModel
 
     private val binding get() = _binding!!
 
@@ -52,9 +50,9 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
         addCameraViewModel= ViewModelProvider(this,factory).get(AddCameraViewModel::class.java)
         //view model for the selected camera
 
-        viewCoverageViewModel=ViewModelProvider(requireActivity(),secondFactory).get(ViewCoverageViewModel::class.java)
+        sharedViewCoverageViewModel=ViewModelProvider(requireActivity(),secondFactory).get(SharedViewCoverageViewModel::class.java)
         binding.singleCoverageViewModel=addCameraViewModel
-        binding.currentCameraViewModel=viewCoverageViewModel
+        binding.currentCameraViewModel=sharedViewCoverageViewModel
 
         initRecyclerView(inflater.context)
 
