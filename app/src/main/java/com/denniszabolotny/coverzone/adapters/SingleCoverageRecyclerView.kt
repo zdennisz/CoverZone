@@ -50,7 +50,7 @@ class SingleCoverageRecyclerView() :
                 if (charSearch.isEmpty()) {
                     cameraFilteredList = dataFromView!!
                 } else {
-                    var resultList = mutableListOf<Camera>()
+                    val resultList = mutableListOf<Camera>()
                     for (row in cameraFilteredList!!) {
                         if (row.camera_name.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(
                                 Locale.ROOT
@@ -71,7 +71,7 @@ class SingleCoverageRecyclerView() :
                 @Suppress("UNCHECKED_CAST")
                 when(results!!){
                 cameraFilteredList -> {
-                    results?.values as MutableList<Camera>
+                    results.values as MutableList<Camera>
                     notifyDataSetChanged()
                 }
 

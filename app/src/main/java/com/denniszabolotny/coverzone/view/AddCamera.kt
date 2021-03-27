@@ -73,10 +73,7 @@ class AddCamera : Fragment(),View.OnClickListener {
 
     }
     fun hideKeyboard(v:View){
-        val inputMethodManager=v.context.getSystemService<InputMethodManager>()
-        if (inputMethodManager != null) {
-            inputMethodManager.hideSoftInputFromWindow(v.windowToken,0)
-        }
+        v.context.getSystemService<InputMethodManager>()?.hideSoftInputFromWindow(v.windowToken,0)
 }
 
 }

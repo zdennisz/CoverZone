@@ -50,7 +50,7 @@ class AddCameraViewModel(private val repository: CameraRepository) : ViewModel()
     fun saveNewCamera(): Boolean {
         when (verifyDataNewCamera()) {
             true -> {
-                var camera = Camera(
+                val camera = Camera(
                     0,
                     offset.value!!,
                     focalLength.value!!,

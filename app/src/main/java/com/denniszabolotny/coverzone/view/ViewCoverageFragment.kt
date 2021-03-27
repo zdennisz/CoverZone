@@ -57,7 +57,7 @@ class ViewCoverageFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout,binding.viewPager,object: TabLayoutMediator.TabConfigurationStrategy {
             override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                //style each tab
-                tab.setText("Tab ${position}")
+                //tab.text = "Tab ${position}"
             }
         }).attach()
         return binding.root

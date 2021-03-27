@@ -21,7 +21,7 @@ val eventList=listOf(0,1)
 
     override fun onBindViewHolder(holder: ViewPagerAdapter.EventViewHolder, position: Int) {
         (holder.view as? TextView)?.also {
-            it.text = "Page " + eventList.get(position)
+            it.text = "Page " + eventList[position]
         }
     }
 
