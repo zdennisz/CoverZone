@@ -9,7 +9,7 @@ object Utils {
         return (double * PI)/180
     }
 
-    fun calcDetection(focalLength:Double,type: ObjectType,height:Double,width:Double,sensorPitch:Double):Double{
+    fun calcDetection(focalLength:Double,type: ObjectType,sensorPitch:Double):Double{
         return when(type){
             ObjectType.Object->calcTarget(focalLength, lpDetObj, objHeight, objWidth, sensorPitch)
             ObjectType.Human->calcTarget(focalLength, lpDet, humanHeight, humanWidth, sensorPitch)
@@ -25,7 +25,7 @@ object Utils {
         }
     }
 
-    fun calcIdentification(focalLength:Double,type: ObjectType,height:Double,width:Double,sensorPitch:Double):Double{
+    fun calcIdentification(focalLength:Double,type: ObjectType,sensorPitch:Double):Double{
         return when(type){
             ObjectType.Nato->calcTarget(focalLength, lpIdent, natoHeight, natoWidth, sensorPitch)
             ObjectType.Human->calcTarget(focalLength, lpIdent, humanHeight, humanWidth, sensorPitch)

@@ -4,8 +4,7 @@ import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.denniszabolotny.coverzone.models.Camera
-import com.denniszabolotny.coverzone.utils.Nintey
-import com.denniszabolotny.coverzone.utils.TwoThousand
+import com.denniszabolotny.coverzone.utils.*
 import com.denniszabolotny.coverzone.utils.Utils.convertDegreeToRad
 import kotlin.math.PI
 import kotlin.math.atan
@@ -15,8 +14,6 @@ class ViewCoverageViewModel: ViewModel() {
 
 
     //here is where we preform all the calculations for the top and the side view
-
-
      //At last we have to take all the zone and subtract the dead zone to get the zone that we can actually cover
 
     fun calculateZoneHfov(camera: Camera,hFov:Double):Double{
@@ -30,10 +27,22 @@ class ViewCoverageViewModel: ViewModel() {
         return height/(tan(radians))
     }
     fun calculateDRI(camera: Camera):MutableMap<String,Double>?{
-        //TODO(preform the same calculations with the DRI calculator and return the result as a map)
-       val res:MutableMap<String,Double>?=null
 
+        val cameraFocalLength:Double=camera.focalLength.toDouble()
+        val cameraDetPitch:Double=camera.detector_pitch.toDouble()
+        val res:MutableMap<String,Double>?=null
 
+        res?.put(ObjectDet,Utils.calcDetection(cameraFocalLength,ObjectType.Object,cameraDetPitch))
+        res?.put(ObjectIdent,Utils.calcIdentification(cameraFocalLength,ObjectType.Object,cameraDetPitch))
+        res?.put(ObjectRec,Utils.calcRecognition(cameraFocalLength,ObjectType.Object,cameraDetPitch))
+
+        res?.put(HumanDet,Utils.calcDetection(cameraFocalLength,ObjectType.Human,cameraDetPitch))
+        res?.put(HumanIdent,Utils.calcIdentification(cameraFocalLength,ObjectType.Human,cameraDetPitch))
+        res?.put(HumanRec,Utils.calcRecognition(cameraFocalLength,ObjectType.Human,cameraDetPitch))
+
+        res?.put(NatoDet,Utils.calcDetection(cameraFocalLength,ObjectType.Nato,cameraDetPitch))
+        res?.put(NatoIdent,Utils.calcIdentification(cameraFocalLength,ObjectType.Nato,cameraDetPitch))
+        res?.put(NatoRec,Utils.calcRecognition(cameraFocalLength,ObjectType.Nato,cameraDetPitch))
        return res
     }
 

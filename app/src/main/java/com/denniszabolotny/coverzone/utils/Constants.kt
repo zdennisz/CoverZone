@@ -14,5 +14,14 @@ const val humanWidth=0.5
 const val humanHeight=1.7
 const val natoWidth=2.3
 const val natoHeight=2.3
+const val NatoDet="NatoDet"
+const val NatoRec="NatoRec"
+const val NatoIdent="NatoIdent"
+const val HumanDet="HumanDet"
+const val HumanRec="HumanRec"
+const val HumanIdent="HumanIdent"
+const val ObjectDet="ObjectDet"
+const val ObjectRec="ObjectRec"
+const val ObjectIdent="ObjectIdent"
 
 
