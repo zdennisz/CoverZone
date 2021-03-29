@@ -26,6 +26,7 @@ class ViewCoverageViewModel: ViewModel() {
         val radians= convertDegreeToRad(angle)
         return height/(tan(radians))
     }
+
     fun calculateDRI(camera: Camera):MutableMap<String,Double>?{
 
         val cameraFocalLength:Double=camera.focalLength.toDouble()

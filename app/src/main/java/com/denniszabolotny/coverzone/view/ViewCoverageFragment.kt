@@ -1,6 +1,7 @@
 package com.denniszabolotny.coverzone.view
 
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.adapters.ViewPagerAdapter
 import com.denniszabolotny.coverzone.databinding.FragmentViewCoverageBinding
 import com.denniszabolotny.coverzone.viewModelFactorys.SingleCameraViewModelFactory
@@ -57,7 +59,19 @@ class ViewCoverageFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout,binding.viewPager,object: TabLayoutMediator.TabConfigurationStrategy {
             override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                //style each tab
-                //tab.text = "Tab ${position}"
+
+                when(position){
+                    0-> {
+                        tab.text = "Side"
+//                        tab.icon= R.drawable.img_title_addcamera as Drawable
+                    }
+                    1->{
+                        tab.text="Top"
+//                        tab.icon=R.drawable.img_multiple_coverage_main_screen as Drawable
+                    }
+
+                }
+
             }
         }).attach()
         return binding.root
