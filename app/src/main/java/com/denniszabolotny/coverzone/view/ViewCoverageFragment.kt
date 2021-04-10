@@ -44,8 +44,6 @@ class ViewCoverageFragment : Fragment() {
         binding.viewCoverageViewModel=viewModelShared
         mBottomSheet=BottomSheetBehavior.from((binding.cameraBottomTab.cameraViewModelBind))
             binding.cameraBottomTab.cameraViewModelBind.setOnClickListener {
-            it.bringToFront()
-                binding.viewPager.invalidate()
                 when(boolean){
             true->   {
                 mBottomSheet!!.state=BottomSheetBehavior.STATE_EXPANDED
@@ -66,12 +64,10 @@ class ViewCoverageFragment : Fragment() {
                     0-> {
                         tab.text = "Side"
 
-//                        tab.icon= R.drawable.img_title_addcamera as Drawable
                     }
                     1->{
                         tab.text="Top"
 
-//                        tab.icon=R.drawable.img_multiple_coverage_main_screen as Drawable
                     }
 
                 }
