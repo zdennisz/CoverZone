@@ -44,7 +44,9 @@ class ViewCoverageFragment : Fragment() {
         binding.viewCoverageViewModel=viewModelShared
         mBottomSheet=BottomSheetBehavior.from((binding.cameraBottomTab.cameraViewModelBind))
             binding.cameraBottomTab.cameraViewModelBind.setOnClickListener {
-            when(boolean){
+            it.bringToFront()
+                binding.viewPager.invalidate()
+                when(boolean){
             true->   {
                 mBottomSheet!!.state=BottomSheetBehavior.STATE_EXPANDED
                 boolean=!boolean
@@ -55,7 +57,7 @@ class ViewCoverageFragment : Fragment() {
             }
             }
         }
-        binding.viewPager.adapter=ViewPagerAdapter()
+        binding.viewPager.adapter=ViewPagerAdapter(this.requireActivity())
         TabLayoutMediator(binding.tabLayout,binding.viewPager,object: TabLayoutMediator.TabConfigurationStrategy {
             override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
                //style each tab
@@ -63,10 +65,12 @@ class ViewCoverageFragment : Fragment() {
                 when(position){
                     0-> {
                         tab.text = "Side"
+
 //                        tab.icon= R.drawable.img_title_addcamera as Drawable
                     }
                     1->{
                         tab.text="Top"
+
 //                        tab.icon=R.drawable.img_multiple_coverage_main_screen as Drawable
                     }
 

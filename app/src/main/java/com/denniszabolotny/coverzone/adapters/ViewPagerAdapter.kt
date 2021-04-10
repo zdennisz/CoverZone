@@ -1,33 +1,24 @@
 package com.denniszabolotny.coverzone.adapters
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.*
-import com.denniszabolotny.coverzone.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.denniszabolotny.coverzone.view.SideViewFragment
+import com.denniszabolotny.coverzone.view.TopViewFragment
 
-class ViewPagerAdapter : Adapter<ViewPagerAdapter.EventViewHolder>() {
-val eventList=listOf(0,1)
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewPagerAdapter.EventViewHolder {
-        return EventViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.tab_layout, parent, false)
-        )
+class ViewPagerAdapter(fa:FragmentActivity) : FragmentStateAdapter(fa) {
+
+
+    override fun getItemCount(): Int {
+       return 2
     }
 
-    override fun onBindViewHolder(holder: ViewPagerAdapter.EventViewHolder, position: Int) {
-        (holder.view as? TextView)?.also {
-            it.text = "Page " + eventList[position]
+    override fun createFragment(position: Int): Fragment {
+        return when(position){
+            0-> SideViewFragment.newInstance()
+            else -> TopViewFragment.newInstance()
         }
     }
 
-    override fun getItemCount(): Int {
-       return eventList.count()
-    }
 
-    class EventViewHolder(val view: View):RecyclerView.ViewHolder(view)
 }

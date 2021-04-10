@@ -1,6 +1,5 @@
 package com.denniszabolotny.coverzone.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denniszabolotny.coverzone.R
 import com.denniszabolotny.coverzone.databinding.ItemLayoutRecyclerViewBinding
 import com.denniszabolotny.coverzone.models.Camera
-import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 class SingleCoverageRecyclerView() :
@@ -26,7 +24,11 @@ class SingleCoverageRecyclerView() :
         val binding: ItemLayoutRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater,
                 R.layout.item_layout_recycler_view, parent, false)
 
-        return MyViewHolder(binding, _onClick as (Camera) -> Unit,_nextButtonClicked as (Camera)->Unit)
+        return MyViewHolder(
+            binding,
+            _onClick as ((Camera) -> Unit?)?,
+            _nextButtonClicked as ((Camera) -> Unit?)?
+        )
     }
 
     override fun getItemCount(): Int {
@@ -94,15 +96,19 @@ class SingleCoverageRecyclerView() :
 }
 
 
-class MyViewHolder(val binding: ItemLayoutRecyclerViewBinding,val onClick:(Camera)->Unit,val nextButtonClicked:(Camera)->Unit) : RecyclerView.ViewHolder(binding.root) {
+class MyViewHolder(
+    val binding: ItemLayoutRecyclerViewBinding,
+    val onClick: ((Camera) -> Unit?)?,
+    val nextButtonClicked: ((Camera) -> Unit?)?
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(camera: Camera) {
         binding.camera=camera
             binding.imageButton.setOnClickListener{
-                nextButtonClicked(camera)
+                nextButtonClicked?.invoke(camera)
             }
             binding.listItemLayout.setOnClickListener {
-                onClick(camera)
+                onClick?.invoke(camera)
 
        }
 

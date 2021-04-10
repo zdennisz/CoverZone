@@ -18,16 +18,17 @@
         android:layout_height="match_parent">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/cameraBottomTab"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-           <include
-            android:id="@+id/cameraViewModelBind"
-               layout="@layout/camera_layout_view_coverage"
-               bind:selectedCamera="@{camera}"/>
+
+            <include
+                android:id="@+id/cameraViewModelBind"
+                layout="@layout/camera_layout_view_coverage"
+                bind:selectedCamera="@{camera}" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

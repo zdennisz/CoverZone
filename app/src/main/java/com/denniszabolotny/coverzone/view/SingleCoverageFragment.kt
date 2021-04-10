@@ -104,11 +104,11 @@ class SingleCoverageFragment : Fragment(), View.OnClickListener {
 
     private fun displayRecyclerViewData() {
         addCameraViewModel.cameras.observe(viewLifecycleOwner, Observer {
-            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>,{ selectedItem: Camera -> itemClicked(selectedItem) },{  selectedItem: Camera -> nextButtonClicked(selectedItem)})
+            binding.singleCoverageAdapter?.loadData(it as MutableList<Camera>,{ selectedItem: Camera -> itemClicked() },{ selectedItem: Camera -> nextButtonClicked(selectedItem)})
 
         })
     }
-    private fun itemClicked(camera: Camera) {
+    private fun itemClicked() {
         //next button click navigation
         navController!!.navigate(R.id.action_singleCoverageFragment_to_editCameraFragment)
     }
