@@ -71,9 +71,9 @@ class SingleCoverageRecyclerView() :
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 @Suppress("UNCHECKED_CAST")
-                when(results!!){
+                when(results?.values){
                 cameraFilteredList -> {
-                    results.values as MutableList<Camera>
+                    results?.values as MutableList<Camera>
                     notifyDataSetChanged()
                 }
 
